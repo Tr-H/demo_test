@@ -8,6 +8,7 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
   std_msgs
+  mavros_msgs
 message_generation
 )
 
@@ -164,6 +165,7 @@ add_executable(demo_team_pos_write src/demo_team_pos_write.cpp)
 add_executable(demo_ekf_esitimator1 src/demo_ekf_esitimator1.cpp)
 add_executable(faleleader_send_test1 src/ekf_test1.cpp)
 add_executable(faleleader_send_test2 src/ekf_test2.cpp)
+add_executable(mavros_att_test src/mavros_att_test.cpp)
 #add_executable(demo_traj_write src/demo_traj_write.cpp)
 #add_executable(demo_traj_yuan src/demo_traj_yuan.cpp)
 #add_executable(demo_yuan_xy src/demo_yuan_xy.cpp)
@@ -210,6 +212,7 @@ target_link_libraries(demo_team_pos_write ${catkin_LIBRARIES})
 target_link_libraries(demo_ekf_esitimator1 ${catkin_LIBRARIES})
 target_link_libraries(faleleader_send_test1 ${catkin_LIBRARIES})
 target_link_libraries(faleleader_send_test2 ${catkin_LIBRARIES})
+target_link_libraries(mavros_att_test ${catkin_LIBRARIES})
 #target_link_libraries(demo_traj_write ${catkin_LIBRARIES})
 #target_link_libraries(demo_traj_yuan ${catkin_LIBRARIES})
 #target_link_libraries(demo_yuan_xy ${catkin_LIBRARIES})

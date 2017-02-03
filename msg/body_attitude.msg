@@ -1,0 +1,4 @@
+float32 body_roll_rate
+float32 body_pitch_rate
+float32 body_yaw_rate
+float32 trust

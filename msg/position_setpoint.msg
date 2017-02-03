@@ -1,0 +1,11 @@
+float32 x_d
+float32 y_d
+float32 z_d
+float32 x_speed_d
+float32 y_speed_d
+float32 z_speed_d
+float32 x_a_d
+float32 y_a_d
+float32 z_a_d
+float32 yaw_d
+float32 yaw_rate_d

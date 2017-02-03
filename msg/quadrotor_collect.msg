@@ -1,0 +1,4 @@
+uint32 num
+float32 sum_currentpos_freq
+float32 sum_desirepos_freq
+float32 sum_type_freq

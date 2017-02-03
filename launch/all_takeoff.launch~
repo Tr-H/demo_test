@@ -1,0 +1,5 @@
+<launch>  
+     
+     <node pkg="demo_test" name="rewrite1" type="demo_pos_write2" args="1 type takeoff" output="screen"/>
+     <node pkg="demo_test" name="rewrite2" type="demo_pos_write2" args="2 type takeoff" output="screen"/>
+</launch> 

@@ -1,0 +1,4 @@
+<launch>  
+     <node pkg="demo_test" name="mavros_send1" type="mavros_send_multi5" args="mavros1 1" output="screen" launch-prefix="xterm -e"/>
+     <node pkg="demo_test" name="mavros_send2" type="mavros_send_multi5" args="mavros2 2" output="screen" launch-prefix="xterm -e"/>
+</launch> 

@@ -1,0 +1,6 @@
+<launch>  
+     
+     <node pkg="rqt_gui" name="console" type="rqt_gui" args="-p 112"/>
+     <node pkg="demo_test" name="ros_client" type="ros_client" output="screen"/>
+    <node pkg="demo_test" name="gcs_q1" type="demo_gcs_API" args="0.03 0.3 -0.3 -1.57 q1 1" output="screen" launch-prefix="xterm -e"/>     
+</launch> 

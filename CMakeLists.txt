@@ -229,7 +229,6 @@ target_link_libraries(mavros_att_test ${catkin_LIBRARIES})
 #   scripts/my_python_script
 #   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 # )
-
 ## Mark executables and/or libraries for installation
 # install(TARGETS demo_test demo_test_node
 #   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}

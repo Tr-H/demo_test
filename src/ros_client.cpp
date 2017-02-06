@@ -59,20 +59,20 @@ int main(int argc, char **argv)
     sock = socket(AF_INET, SOCK_DGRAM, 0);
     if (sock == -1)
     {
-       // cout<<"socket error"<<endl;
-       ROS_INFO("socket error ");
+        // cout<<"socket error"<<endl;
+        ROS_INFO("socket error ");
         return -1;
     }
     memset(&local_addr, 0, sizeof(local_addr));
     memset(&temp_addr, 0, sizeof(temp_addr));
     local_addr.sin_family = AF_INET;
     local_addr.sin_addr.s_addr = htonl(INADDR_ANY);
-//    local_addr.sin_addr.s_addr = inet_addr("169.254.6.162");
+    //    local_addr.sin_addr.s_addr = inet_addr("169.254.6.162");
     local_addr.sin_port = htons(MCAST_PORT);
-    
+
     int err = 0;
     int value = 1;
-//    err = setsockopt(sock, IPPROTO_IP, IP_MULTICAST_IF, &local_addr.sin_addr.s_addr, sizeof(local_addr.sin_addr.s_addr));
+    //    err = setsockopt(sock, IPPROTO_IP, IP_MULTICAST_IF, &local_addr.sin_addr.s_addr, sizeof(local_addr.sin_addr.s_addr));
     err = setsockopt(sock, SOL_SOCKET, SO_REUSEADDR, (char*)&value, sizeof(value));
     if (err < 0)
     {
@@ -91,7 +91,7 @@ int main(int argc, char **argv)
     struct ip_mreq mreq;
     mreq.imr_multiaddr.s_addr = inet_addr(MCAST_ADDR);
     mreq.imr_interface.s_addr = htonl(INADDR_ANY);
-//    mreq.imr_interface.s_addr = inet_addr("169.254.6.162");
+    //    mreq.imr_interface.s_addr = inet_addr("169.254.6.162");
     err = setsockopt(sock, IPPROTO_IP, IP_ADD_MEMBERSHIP, &mreq, sizeof(mreq));
     if (err < 0)
     {
@@ -112,12 +112,12 @@ int main(int argc, char **argv)
     {
         //i--;
         n = recvfrom(sock, buff, 1000, 0, (struct sockaddr*)&temp_addr, &addr_len);
-    //    n = read(sock, buff, sizeof(buff));
-    //    if (n < 0)
-    //    {
-    //        cout<<"recvfrom() errro"<<endl;
-    //        return -2;
-    //    }
+        //    n = read(sock, buff, sizeof(buff));
+        //    if (n < 0)
+        //    {
+        //        cout<<"recvfrom() errro"<<endl;
+        //        return -2;
+        //    }
         ROS_INFO("recevive %d bytes from %s", n, inet_ntoa(temp_addr.sin_addr));
         int test = 0;
         test = unpack(buff, &pos);
@@ -135,7 +135,7 @@ int main(int argc, char **argv)
             chatter_pub.publish(pos);
         }
         //
-        
+
     }
 
     return 0;
@@ -147,11 +147,11 @@ int unpack(char *pdata, demo_test::pos_data *pos)
 {
     int major = 2;
     int minor = 7;
- //decoding
-   char *ptr =pdata;
-   int msgid = 0;
-   memcpy(&msgid, ptr, 2);
-   if (msgid == 7)
+    //decoding
+    char *ptr =pdata;
+    int msgid = 0;
+    memcpy(&msgid, ptr, 2);
+    if (msgid == 7)
     {
         printf("\nBegin Packet\n---------------------\n");
         //1 msgid
@@ -193,7 +193,7 @@ int unpack(char *pdata, demo_test::pos_data *pos)
             printf("ID : %d\n", ID);
             printf("pos: [%4.3f,%4.3f,%4.3f]\n", x,y,z);
             printf("ori: [%4.3f,%4.3f,%4.3f,%4.3f]\n", qx,qy,qz,qw);
-            
+
             pos->pos[j*3] = x;
             pos->pos[j*3+1] = y;
             pos->pos[j*3+2] = z;
@@ -209,7 +209,7 @@ int unpack(char *pdata, demo_test::pos_data *pos)
             int nBytes = nRigidMarkers*3*sizeof(float);
             float* markerData = (float*)malloc(nBytes);
             memcpy(markerData, ptr, nBytes); ptr += nBytes;
-            
+
             if(major >= 2)
             {
                 //6.3 associated marker IDs  12bytes
@@ -259,7 +259,7 @@ int unpack(char *pdata, demo_test::pos_data *pos)
                 short params = 0; memcpy(&params, ptr, 2); ptr += 2;
                 bool bTrackingValid = params & 0x01; // 0x01 : rigid body was successfully tracked in this frame
             }
-            
+
         } // next rigid body
         //
         //7 skeletons
@@ -308,12 +308,12 @@ int unpack(char *pdata, demo_test::pos_data *pos)
         printf("eod: %d\n", eod);
         printf("End Packet\n----------------\n");
         return 1;
-            
+
     }
-   else
-   {
-       printf("unrecognized packet\n");
-       return -1;
-   }
+    else
+    {
+        printf("unrecognized packet\n");
+        return -1;
+    }
 
 }

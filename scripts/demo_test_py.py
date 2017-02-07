@@ -8,12 +8,13 @@ def  callback(data):
     header = data.header
     timestamp = header.stamp.to_sec()
     print header.seq, "heard that %d body from Optitrack at %12f"%(data.num, timestamp)
+    print "=========================================================="
     for i in range(data.num):
-        print "=========================================================="
+        print "----------------------------------------------------------"
         print "   id : %d"%i
         print "   pos: %.2f %.2f %.2f "%(data.pos[i * 3],data.pos[i * 3 + 1],data.pos[i * 3 + 2])
         print "   q  : %.2f %.2f %.2f %.2f "%(data.q[i * 4],data.q[i*4 +1],data.q[i*4 +2],data.q[i*4 +3])
-
+    print "=========================================================="
 def listener_with_user_data():
     rospy.Subscriber("demo_udp",pos_data,callback)
     rospy.init_node(NAME,anonymous=True)

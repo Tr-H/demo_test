@@ -59,6 +59,7 @@ endif()
 #   Message2.msg
 # )
  add_message_files(
+   DIRECTORY msg
    FILES
    pos_data.msg
    pos_write_data.msg
@@ -109,7 +110,7 @@ generate_messages(
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES demo_test
-#  CATKIN_DEPENDS roscpp rospy std_msgs
+  CATKIN_DEPENDS roscpp rospy std_msgs message_runtime
 #  DEPENDS system_lib
 )
 
@@ -229,6 +230,14 @@ target_link_libraries(mavros_att_test ${catkin_LIBRARIES})
 #   scripts/my_python_script
 #   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 # )
+#install(PROGRAMS
+#    scripts/demo_test_py.py
+#    DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+#)
+catkin_install_python(PROGRAMS
+    scripts/demo_test_py.py 
+    DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
+    )
 ## Mark executables and/or libraries for installation
 # install(TARGETS demo_test demo_test_node
 #   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
@@ -236,13 +245,22 @@ target_link_libraries(mavros_att_test ${catkin_LIBRARIES})
 #   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 # )
 
+#install(TARGETS demo_test demo_test_py_node
+  #ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+  #LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+  #RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+#)
 ## Mark cpp header files for installation
-# install(DIRECTORY include/${PROJECT_NAME}/
-#   DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
-#   FILES_MATCHING PATTERN "*.h"
-#   PATTERN ".svn" EXCLUDE
-# )
+ install(DIRECTORY include/${PROJECT_NAME}/
+   DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
+   FILES_MATCHING PATTERN "*.h"
+ )
 
+#install(DIRECTORY include/${PROJECT_NAME}/
+#  DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
+#  FILES_MATCHING PATTERN "*.h"
+#  PATTERN ".svn" EXCLUDE
+#)
 ## Mark other files for installation (e.g. launch and bag files, etc.)
 # install(FILES
 #   # myfile1

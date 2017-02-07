@@ -108,6 +108,7 @@ int main(int argc, char **argv)
     int n = 0;
     int i = 0;
     int j = 0;
+    int send_seq = 0;
     while(ros::ok())
     {
         //i--;
@@ -132,6 +133,8 @@ int main(int argc, char **argv)
                 ROS_INFO("rigidbody_q::    id:%d, qx:%f, qy:%f, qz%f, qw%f", k+1, pos.q[k*4], pos.q[k*4+1], pos.q[k*4+2], pos.q[k*4+3]);
             }
             pos.header.stamp = ros::Time::now();
+            send_seq ++;
+            pos.header.seq = send_seq;
             chatter_pub.publish(pos);
         }
         //

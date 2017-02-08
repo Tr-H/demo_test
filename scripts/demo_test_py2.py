@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # coding=utf-8
 NAME = 'demo_test_py2'
+freq_send = float(60)
 from apscheduler.schedulers.blocking import BlockingScheduler
 import rospy
 import threading
@@ -11,7 +12,7 @@ global_pos = []
 global_q = []
 mutexA = threading.Lock()
 def sending_data():
-    global global_num,global_pos,global_q,mutexA
+    global global_num,global_pos,global_q,global_header,mutexA
     if mutexA.acquire():
         for i in range(global_num):
             pub = rospy.Publisher("/mavros{0}/mocap/pose".format(i+1),PoseStamped,queue_size=10)
@@ -27,7 +28,7 @@ def sending_data():
         mutexA.release()
 
 def  callback(data):
-    global global_num,global_pos,global_q,mutexA
+    global global_num,global_pos,global_q,global_header,mutexA
     header = data.header
     timestamp = header.stamp.to_sec()
     print header.seq, "heard that %d body from Optitrack at %12f"%(data.num, timestamp)
@@ -46,14 +47,15 @@ def  callback(data):
 def thread_init():
     rospy.Subscriber("demo_udp",pos_data,callback)
     rospy.init_node(NAME,anonymous=True)
-    scheduler = BlockingScheduler()
-    scheduler.add_job(sending_data,'interval',seconds=0.02, id = 'sending_data_id')
-    scheduler.start()
-    rospy.spin()
 
 if __name__ == '__main__':
+    scheduler = BlockingScheduler()
+    scheduler.add_job(sending_data,'interval',seconds=1.0/freq_send, id = 'sending_data_id')
     try:
         thread_init()
+        scheduler.start()
+        rospy.spin()
     except rospy.ROSInterruptException:
         pass
+    scheduler.shutdown()
     print "exiting"

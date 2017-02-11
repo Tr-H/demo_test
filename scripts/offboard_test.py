@@ -73,7 +73,7 @@ def task_main():
                 last_request = rospy.Time.now()
                 is_arm_offb = True
         local_pos_pub.publish(pose)
-        if (rospy.Time.now() - task_start) > rospy.Duration(30.0):
+        if (rospy.Time.now() - task_start) > rospy.Duration(90.0):
             break
         rate.sleep()
 

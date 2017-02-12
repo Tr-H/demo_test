@@ -46,7 +46,7 @@ def task_main():
     pose = PoseStamped()
     pose.pose.position.x = 0.0
     pose.pose.position.y = 0.0
-    pose.pose.position.z = -0.5
+    pose.pose.position.z = -1.0
     yaw = -1.57
     orient_sp = rpy_to_q(0.0,0.0,yaw)
     pose.pose.orientation.w = orient_sp[0]

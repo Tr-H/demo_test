@@ -11,6 +11,7 @@ last_receive_time = rospy.Time()
 global_pos_data = pos_data()
 print_decode_bool = False
 print_send_bool = True
+send_hil_gps = True
 mutexA = threading.Lock()
 last_seq = 0
 def sending_data():
@@ -24,6 +25,7 @@ def sending_data():
             pose_stemp.header = global_pos_data.header
             for i in range(global_pos_data.num):
                 pub = rospy.Publisher("/mavros{0}/mocap/pose".format(i+1),PoseStamped,queue_size=10)
+                pub1 = rospy.Publisher("/mavros{0}/fake_gps/fix".format(i+1),PoseStamped,queue_size=10)
                 pose_stemp.pose.position.x = global_pos_data.pos[i*3]
                 pose_stemp.pose.position.y = global_pos_data.pos[i*3+1]
                 pose_stemp.pose.position.z = global_pos_data.pos[i*3+2]
@@ -32,6 +34,7 @@ def sending_data():
                 pose_stemp.pose.orientation.z = global_pos_data.q[i*4+2]
                 pose_stemp.pose.orientation.w = global_pos_data.q[i*4+3]
                 pub.publish(pose_stemp)
+                pub1.publish(pose_stemp)
                 if print_send_bool :
                     print "要发送数据包",global_pos_data.header.seq, "：要发送刚体 %d 的数据 时间 %12f"%(i+1,global_pos_data.header.stamp.to_sec())
             last_seq = global_pos_data.header.seq

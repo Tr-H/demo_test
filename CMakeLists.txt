@@ -237,6 +237,9 @@ target_link_libraries(mavros_att_test ${catkin_LIBRARIES})
 catkin_install_python(PROGRAMS
     scripts/demo_test_py.py 
     scripts/demo_test_py2.py 
+    scripts/mocap_send.py 
+    scripts/offboard_test.py 
+    scripts/teleop_keyboard_control.py 
     DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
     )
 ## Mark executables and/or libraries for installation

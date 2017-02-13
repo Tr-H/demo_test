@@ -45,9 +45,9 @@ moveBindings = {
     'S':(-0.4,0.0,0.0,0.0),
     'a':(0.0,-0.2,0.0,0.0),
     'A':(0.0,-0.4,0.0,0.0),
-    'q':(0.0,0.0,0.0,-0.3),
+    'q':(0.0,0.0,0.0,-0.2),
     'Q':(0.0,0.0,0.0,-0.3),
-    'e':(0.0,0.0,0.0,0.3),
+    'e':(0.0,0.0,0.0,0.2),
     'E':(0.0,0.0,0.0,0.3),
     'j':(0.0,0.0,0.15,0.0),
     'J':(0.0,0.0,0.3,0.0),
@@ -70,8 +70,8 @@ def rpy_to_q(r,p,yaw):
     return Q
 
 def limit_fram(fram_i):
-    if math.fabs(fram_i) > 1.5:
-        res = math.copysign(1.5,fram_i)
+    if math.fabs(fram_i) > 1.2:
+        res = math.copysign(1.2,fram_i)
     else:
         res = fram_i
     return res
@@ -203,7 +203,7 @@ def task_main():
         temp_pose.pose.orientation.z = orient_sp[3]
         mutexA.release()
     last_time = rospy.Time.now()
-    t_step = 0.08
+    t_step = 0.1
     print msg
     while(1):
         key = getKey()

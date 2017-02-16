@@ -3,10 +3,12 @@
 
 NAME = 'mocap_send_py'
 freq_send = int(60)
+import lcm
 import rospy
 import threading
 from geometry_msgs.msg import PoseStamped
 from demo_test.msg import pos_data
+from exlcm import example_t
 last_receive_time = rospy.Time()
 global_pos_data = pos_data()
 print_decode_bool = False
@@ -14,6 +16,7 @@ print_send_bool = True
 send_hil_gps = True
 mutexA = threading.Lock()
 last_seq = 0
+lcm_send = lcm.LCM()
 def sending_data():
     global global_pos_data,mutexA,last_receive_time,print_send_bool,last_seq
     send_rate = rospy.Rate(freq_send)
@@ -42,7 +45,7 @@ def sending_data():
         send_rate.sleep()
 
 def  callback(data):
-    global global_pos_data,mutexA,last_receive_time
+    global global_pos_data,mutexA,last_receive_time,lcm_send
     header = data.header
     timestamp = header.stamp.to_sec()
     last_receive_time = rospy.Time.now()
@@ -55,9 +58,15 @@ def  callback(data):
             print "   位置 x: %.4f y: %.4f z: %.4f "%(data.pos[i * 3],data.pos[i * 3 + 1],data.pos[i * 3 + 2])
             print "   姿态 x: %.4f y: %.4f z: %.4f w: %.4f "%(data.q[i * 4],data.q[i*4 +1],data.q[i*4 +2],data.q[i*4 +3])
         print "=========================================================="
+    lcm_msg = example_t()
     if mutexA.acquire():
         global_pos_data = data
+        lcm_msg.timestamp = 0
+        lcm_msg.position = data.pos
+        lcm_msg.orientation = data.q
+        lcm_msg.num = data.num
         mutexA.release()
+    lcm_send.publish("EXAMPLE", lcm_msg.encode())
 
 def thread_init():
     rospy.init_node(NAME,anonymous=True)

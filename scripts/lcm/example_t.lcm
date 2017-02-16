@@ -1,0 +1,8 @@
+package exlcm;
+struct example_t
+{
+        int64_t  timestamp;
+        int16_t num;
+        double   position[18];
+        double   orientation[24]; 
+}

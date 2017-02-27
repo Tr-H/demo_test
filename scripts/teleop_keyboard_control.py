@@ -3,12 +3,15 @@
 import rospy
 import sys,select,termios,tty
 import math
+import argparse
 import threading
 from geometry_msgs.msg import PoseStamped
 from mavros_msgs.srv import CommandBool
 from mavros_msgs.srv import SetMode
 from mavros_msgs.msg import State
 id_uav = 1
+name_ros_node = 'teleop_keyboard_control{0}'
+
 temp_pose = PoseStamped()
 mutexA = threading.Lock()
 current_state = State()
@@ -69,9 +72,16 @@ def rpy_to_q(r,p,yaw):
     Q = [w,x,y,z]
     return Q
 
-def limit_fram(fram_i):
+def limit_fram_xy(fram_i):
     if math.fabs(fram_i) > 1.2:
         res = math.copysign(1.2,fram_i)
+    else:
+        res = fram_i
+    return res
+
+def limit_fram_z(fram_i):
+    if math.fabs(fram_i) > 1.5:
+        res = math.copysign(1.5,fram_i)
     else:
         res = fram_i
     return res
@@ -205,15 +215,16 @@ def task_main():
     last_time = rospy.Time.now()
     t_step = 0.1
     print msg
-    while(1):
+    #while(1):
+    while not rospy.is_shutdown():
         key = getKey()
         dt = (rospy.Time.now()-last_time).to_sec()
         if dt > 0.05 :
             if key in moveBindings.keys():
                 if is_arm_offb and mutexA.acquire():
-                    x = limit_fram(temp_pose.pose.position.x + moveBindings[key][0]*math.cos(yaw)*t_step- moveBindings[key][1]*math.sin(yaw)*t_step)
-                    y = limit_fram(temp_pose.pose.position.y + moveBindings[key][0]*math.sin(yaw)*t_step+ moveBindings[key][1]*math.cos(yaw)*t_step)
-                    z = limit_fram(temp_pose.pose.position.z + moveBindings[key][2]*t_step)
+                    x = limit_fram_xy(temp_pose.pose.position.x + moveBindings[key][0]*math.cos(yaw)*t_step- moveBindings[key][1]*math.sin(yaw)*t_step)
+                    y = limit_fram_xy(temp_pose.pose.position.y + moveBindings[key][0]*math.sin(yaw)*t_step+ moveBindings[key][1]*math.cos(yaw)*t_step)
+                    z = limit_fram_z(temp_pose.pose.position.z + moveBindings[key][2]*t_step)
                     yaw = limit_yaw(yaw + moveBindings[key][3]*t_step)
                     temp_pose.pose.position.x = x
                     temp_pose.pose.position.y = y
@@ -247,7 +258,13 @@ def thread_init():
 if __name__=="__main__":
     settings = termios.tcgetattr(sys.stdin)
 
-    rospy.init_node('teleop_keyboard_control',anonymous=True)
+    parser = argparse.ArgumentParser()
+    parser.add_argument("idofuav", help = "输入被控无人机的ID",
+                        type = int)
+    args = parser.parse_args()
+    id_uav = args.idofuav
+
+    rospy.init_node(name_ros_node.format(id_uav),anonymous=True)
     try:
         thread_init()
     except rospy.ROSInterruptException:

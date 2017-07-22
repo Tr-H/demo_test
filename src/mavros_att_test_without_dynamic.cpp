@@ -37,7 +37,7 @@ struct Q_att from_euler(float roll, float pitch, float yaw)
 }
 int main(int argc, char **argv)
 {
-    ros::init(argc, argv, "mavros_att_test");
+    ros::init(argc, argv, "mavros_att_test_without_dynamic");
     ros::NodeHandle nh;
 
     ros::Subscriber state_sub = nh.subscribe<mavros_msgs::State>
@@ -124,39 +124,9 @@ mavros_msgs::State current_state;
                 roll_set = 0.0f;
                 pitch_set = 0.0f;
                 yaw_set = 0.0f;
-                temp_throttle = 0.56f;
+                temp_throttle = 0.5f;
             }    
-        else if(process_cout > 30*freq_setpoint && process_cout <=95*freq_setpoint )
-            { 
-               int start_count = 30*freq_setpoint;
-               if(process_cout <= 90*freq_setpoint)
-               {
-                   roll_set = 0.1*sin(((process_cout - start_count)/(20*freq_setpoint))*M_PI*2);
-               }
-               else
-               {
-                   roll_set = 0.0f;
-               }
-               if(process_cout >= 35*freq_setpoint)
-               {
-                   pitch_set = 0.1*sin(((process_cout - start_count -5*freq_setpoint)/(20*freq_setpoint))*M_PI*2);
-               }
-               else
-               {
-                   pitch_set = 0.0f;
-               }
-               yaw_set = 0.0f;
-               temp_throttle = 0.56f;
-            }
-        else if(process_cout >95*freq_setpoint && process_cout <= 110*freq_setpoint )
-            {
-                
-                roll_set = 0.0f;
-                pitch_set = 0.0f;
-                yaw_set = 0.0f;
-                temp_throttle = 0.56f;
-            }
-        else if(process_cout > 110*freq_setpoint )
+        else if(process_cout > 30*freq_setpoint )
         {
             arm_cmd.request.value = false;
             if(arming_client.call(arm_cmd) && arm_cmd.response.success)

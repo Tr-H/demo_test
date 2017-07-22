@@ -124,7 +124,7 @@ mavros_msgs::State current_state;
                 roll_set = 0.0f;
                 pitch_set = 0.0f;
                 yaw_set = 0.0f;
-                temp_throttle = 0.56f;
+                temp_throttle = 0.51f;
             }    
         else if(process_cout > 30*freq_setpoint && process_cout <=95*freq_setpoint )
             { 
@@ -146,7 +146,7 @@ mavros_msgs::State current_state;
                    pitch_set = 0.0f;
                }
                yaw_set = 0.0f;
-               temp_throttle = 0.56f;
+               temp_throttle = 0.51f;
             }
         else if(process_cout >95*freq_setpoint && process_cout <= 110*freq_setpoint )
             {
@@ -154,7 +154,7 @@ mavros_msgs::State current_state;
                 roll_set = 0.0f;
                 pitch_set = 0.0f;
                 yaw_set = 0.0f;
-                temp_throttle = 0.56f;
+                temp_throttle = 0.51f;
             }
         else if(process_cout > 110*freq_setpoint )
         {

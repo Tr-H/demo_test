@@ -27,6 +27,10 @@ msg = """
 Reading from keyboard and control the Quad!
 --------------------------------------------------------------
 Moving around:
+                             tT: oftraject mode enable
+                             oO: ofwhycon mode enable
+                             pP: offboard force enable
+
           qQ           eE
                  W                             J
                  w                             j :UP
@@ -52,10 +56,10 @@ moveBindings = {
     'Q':(0.0,0.0,0.0,-0.3),
     'e':(0.0,0.0,0.0,0.2),
     'E':(0.0,0.0,0.0,0.3),
-    'j':(0.0,0.0,0.15,0.0),
-    'J':(0.0,0.0,0.3,0.0),
-    'k':(0.0,0.0,-0.15,0.0),
-    'K':(0.0,0.0,-0.3,0.0),
+    'j':(0.0,0.0,-0.15,0.0),
+    'J':(0.0,0.0,-0.3,0.0),
+    'k':(0.0,0.0,0.15,0.0),
+    'K':(0.0,0.0,0.3,0.0),
 }
 
 def rpy_to_q(r,p,yaw):
@@ -72,18 +76,21 @@ def rpy_to_q(r,p,yaw):
     Q = [w,x,y,z]
     return Q
 
-def limit_fram_xy(fram_i):
-    if math.fabs(fram_i) > 1.2:
-        res = math.copysign(1.2,fram_i)
+def limit_fram_xy(fram_x,fram_y):
+    length_xy = math.sqrt(math.pow(fram_x,2) + math.pow(fram_y,2))
+    if math.fabs(length_xy) > 1.65:
+        normal_x = fram_x/length_xy
+        normal_y = fram_y/length_xy
+        res = [normal_x*1.65,normal_y*1.65]
     else:
-        res = fram_i
+        res = [fram_x,fram_y]
     return res
 
-def limit_fram_z(fram_i):
-    if math.fabs(fram_i) > 1.5:
-        res = math.copysign(1.5,fram_i)
+def limit_fram_z(fram_z):
+    if math.fabs(fram_z) > 1.5:
+        res = math.copysign(1.5,fram_z)
     else:
-        res = fram_i
+        res = fram_z
     return res
 
 def limit_yaw(yaw):
@@ -103,7 +110,7 @@ def getKey():
     return key
 
 def command_send():
-    global temp_pose,id_uav
+    global temp_pose,id_uav,mutexA
     pub = rospy.Publisher("/mavros{0}/setpoint_position/local".format(id_uav),PoseStamped,queue_size=10)
     send_rate = rospy.Rate(10)
     while not rospy.is_shutdown():
@@ -139,10 +146,60 @@ def arm_and_takeoff():
                 is_arm_offb = True
                 break
 
+def offboard_whycon_enable():
+    global current_state,is_arm_offb,temp_pose,mutexA,id_uav
+    set_ofwhycon_client = rospy.ServiceProxy('/mavros{0}/set_mode'.format(id_uav),SetMode)
+    print" ready for follow target "
+    while not rospy.is_shutdown():
+        if set_ofwhycon_client(0,"OFWHYCON").success :
+            print "无人机 %d 进入OFWHYCON模式"%id_uav
+            break
+
+def offboard_traject_enable():
+    global current_state,is_arm_offb,temp_pose,mutexA,id_uav
+    set_ofwhycon_client = rospy.ServiceProxy('/mavros{0}/set_mode'.format(id_uav),SetMode)
+    print" ready for traject mode "
+    while not rospy.is_shutdown():
+        if set_ofwhycon_client(0,"OFTRAJECT").success :
+            print "无人机 %d 进入OFTRAJECT模式"%id_uav
+            break
+
+def offboard_force_enable():
+    global home_x,home_y,home_z,home_yaw,current_state,is_arm_offb,temp_pose,mutexA,id_uav,home_init_done
+    home_init_done = False
+    sub_once = rospy.Subscriber("/mavros{0}/mocap/pose".format(id_uav),PoseStamped,home_p_cb)
+    rate_wait = rospy.Rate(40)
+    while not rospy.is_shutdown():
+        if home_init_done:
+	    if mutexA.acquire():
+		temp_pose.pose.position.x = home_x
+		temp_pose.pose.position.y = home_y
+                temp_pose.pose.position.z = home_z
+                orient_sp = rpy_to_q(0.0,0.0,home_yaw)
+                temp_pose.pose.orientation.w = orient_sp[0]
+                temp_pose.pose.orientation.x = orient_sp[1]
+                temp_pose.pose.orientation.y = orient_sp[2]
+                temp_pose.pose.orientation.z = orient_sp[3]
+                mutexA.release()
+            sub_once.unregister()
+            break
+        else:
+            rate_wait.sleep()
+    set_offboard_client = rospy.ServiceProxy('/mavros{0}/set_mode'.format(id_uav),SetMode)
+    while not rospy.is_shutdown():
+        if set_offboard_client(0,"OFFBOARD").success :
+            print "无人机 %d 进入offboard模式"%id_uav
+            break
+
 def land_and_disarm():
     global current_state,is_arm_offb,temp_pose,mutexA,id_uav
+    set_offboard_client = rospy.ServiceProxy('/mavros{0}/set_mode'.format(id_uav),SetMode)
+    while not rospy.is_shutdown():
+        if set_offboard_client(0,"OFFBOARD").success :
+            print "无人机 %d 进入offboard模式"%id_uav
+            break
     if mutexA.acquire():
-        temp_pose.pose.position.z = 0.0
+        temp_pose.pose.position.z = 0.05
         mutexA.release()
     last_request = rospy.Time.now()
     arming_client = rospy.ServiceProxy('/mavros{0}/cmd/arming'.format(id_uav),CommandBool)
@@ -222,8 +279,9 @@ def task_main():
         if dt > 0.05 :
             if key in moveBindings.keys():
                 if is_arm_offb and mutexA.acquire():
-                    x = limit_fram_xy(temp_pose.pose.position.x + moveBindings[key][0]*math.cos(yaw)*t_step- moveBindings[key][1]*math.sin(yaw)*t_step)
-                    y = limit_fram_xy(temp_pose.pose.position.y + moveBindings[key][0]*math.sin(yaw)*t_step+ moveBindings[key][1]*math.cos(yaw)*t_step)
+                    #x = limit_fram_xy(temp_pose.pose.position.x + moveBindings[key][0]*math.cos(yaw)*t_step- moveBindings[key][1]*math.sin(yaw)*t_step)
+                    #y = limit_fram_xy(temp_pose.pose.position.y + moveBindings[key][0]*math.sin(yaw)*t_step+ moveBindings[key][1]*math.cos(yaw)*t_step)
+                    [x,y] = limit_fram_xy((temp_pose.pose.position.x + moveBindings[key][0]*math.cos(yaw)*t_step- moveBindings[key][1]*math.sin(yaw)*t_step),(temp_pose.pose.position.y + moveBindings[key][0]*math.sin(yaw)*t_step+ moveBindings[key][1]*math.cos(yaw)*t_step))
                     z = limit_fram_z(temp_pose.pose.position.z + moveBindings[key][2]*t_step)
                     yaw = limit_yaw(yaw + moveBindings[key][3]*t_step)
                     temp_pose.pose.position.x = x
@@ -239,6 +297,12 @@ def task_main():
                 arm_and_takeoff()
             elif (key == 'b' or key == 'B'):
                 land_and_disarm()
+            elif (key == 'o' or key == 'O'):
+                offboard_whycon_enable()
+            elif (key == 'p' or key == 'P'):
+                offboard_force_enable()
+            elif (key == 't' or key == 'T'):
+                offboard_traject_enable()
             elif (key == '\x03'):
                 break
             last_time = rospy.Time.now()
@@ -259,7 +323,7 @@ if __name__=="__main__":
     settings = termios.tcgetattr(sys.stdin)
 
     parser = argparse.ArgumentParser()
-    parser.add_argument("idofuav", help = "输入被控无人机的ID",
+    parser.add_argument("idofuav",nargs = '?', help = "输入被控无人机的ID", default = 1,
                         type = int)
     args = parser.parse_args()
     id_uav = args.idofuav

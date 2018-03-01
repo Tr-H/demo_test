@@ -154,6 +154,37 @@ int unpack(char *pdata, demo_test::pos_data *pos)
     char *ptr =pdata;
     int msgid = 0;
     memcpy(&msgid, ptr, 2);
+
+    if (msgid == 5)
+    {
+        printf("\nunpack Data Descriptions\n")
+        int datasetCount = 0;
+        memcpy(&datasetCount, ptr, 4);
+        ptr += 4;
+        printf("datasetCount: %d\n", datasetCount);
+        for(int i = 1; i <= datasetCount; i++)
+        {
+            int type = 0; 
+            memcpy(&type, ptr, 4);
+            ptr += 4;
+            printf("type : %d\n", type);
+            if(type == 0)
+            {
+                char partition = 'a';
+                do{
+                    memcpy(&partition, ptr, 1);
+                    ptr ++;
+
+                }while(partition != '\0');
+            }
+
+        }
+    }
+
+
+
+
+
     if (msgid == 7)
     {
         printf("\nBegin Packet\n---------------------\n");

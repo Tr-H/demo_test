@@ -152,8 +152,160 @@ int unpack(char *pdata, demo_test::pos_data *pos)
     int minor = 7;
     //decoding
     char *ptr =pdata;
+
+    // ID (1 bytes 1 char)
     int msgid = 0;
     memcpy(&msgid, ptr, 2);
+    ptr += 2;
+    // printf("msgid: %d\n", msgid);
+
+    // Packet size
+    int packetsize = 0;
+    memcpy(&packetsize, ptr, 2);
+    ptr += 2;
+    //printf("Packet Size: %d\n", packetsize);
+
+    if (msgid == 7) { 
+        /* FRAMEOFDATA */
+        //printf("Begin MoCap Frame\n----------------\n");
+        /* Frame number */
+        int frameNumber = 0;
+        memcpy(&frameNumber, ptr, 4);
+        ptr += 4;
+        //printf("Frame #:%d\n", frameNumber);
+
+        /* Marker set count */
+        int markerSetCount = 0;
+        memcpy(&markerSetCount, ptr, 4);
+        ptr += 4;
+        //printf("Marker Set Count:%d\n", markerSetCount);
+
+        for(int i = 0; i < markerSetCount; i++) {
+
+            /* Model name */
+            //printf("Model Name:");
+            char temp = 'a';
+            do {
+                memcpy(&temp, ptr, 1);
+                ptr ++;
+                //printf("%c",temp);
+            } while (temp != '\0');
+            //printf("\n");
+
+            /* Marker count */
+            int markerCount = 0;
+            memcpy(&markerCount, ptr, 4);
+            ptr += 4;
+            //printf("Marker Count:%d\n", markerCount);
+
+            for(int j = 0; j < markerCount; j++) {
+                float pos_x,pos_y,pos_z;
+                memcpy(&pos_x, ptr, 4); ptr += 4;
+                memcpy(&pos_y, ptr, 4); ptr += 4;
+                memcpy(&pos_z, ptr, 4); ptr += 4;
+                //printf("  Marker[%d]: %.2f, %.2f, %.2f\n",j,pos_x,pos_y,pos_z);
+            }
+        }
+
+        /* Unlabeled markers cout (4 bytes) */
+        int unlabeledMarkersCount = 0;
+        memcpy(&unlabeledMarkersCount, ptr, 4);
+        ptr += 4;
+        //printf("Unlabeled Markers Count:%d\n", unlabeledMarkersCount);
+
+        for(int i = 0; i < unlabeledMarkersCount; i++)  {
+            float pos_x,pos_y,pos_z;
+            memcpy(&pos_x, ptr, 4); ptr += 4;
+            memcpy(&pos_y, ptr, 4); ptr += 4;
+            memcpy(&pos_z, ptr, 4); ptr += 4;
+            //printf("  Marker[%d]: %.2f, %.2f, %.2f\n",i,pos_x,pos_y,pos_z);
+        }
+
+        int rigidBodyCount = 0;
+        memcpy(&rigidBodyCount, ptr, 4);
+        ptr += 4;
+        //printf("Rigid Body Count:%d \n", rigidBodyCount);
+        pos->num = rigidBodyCount;
+
+        for (int i = 0; i < rigidBodyCount; i++) {
+
+            /* ID (4 bytes) */
+            int rigidbody_id = 0;
+            memcpy(&rigidbody_id, ptr, 4);
+            ptr += 4;
+            printf("ID:%d \n", rigidbody_id);
+            float pos_x,pos_y,pos_z;
+            memcpy(&pos_x, ptr, 4); ptr += 4;
+            memcpy(&pos_y, ptr, 4); ptr += 4;
+            memcpy(&pos_z, ptr, 4); ptr += 4;
+            printf("  Position[%d]: %.2f, %.2f, %.2f\n",i,pos_x,pos_y,pos_z);
+            float rot_x,rot_y,rot_z,rot_w;
+            memcpy(&rot_x, ptr, 4); ptr += 4;
+            memcpy(&rot_y, ptr, 4); ptr += 4;
+            memcpy(&rot_z, ptr, 4); ptr += 4;
+            memcpy(&rot_w, ptr, 4); ptr += 4;
+            printf("  Orientation[%d]: %.2f, %.2f, %.2f, %.2f\n",i,rot_x,rot_y,rot_z,rot_w);
+            pos->pos[i*3] = pos_x;
+            pos->pos[i*3+1] = pos_y;
+            pos->pos[i*3+2] = pos_z;
+            pos->q[i*4] = rot_x;
+            pos->q[i*4+1] = rot_y;
+            pos->q[i*4+2] = rot_z;
+            pos->q[i*4+3] = rot_w;
+            
+            /* Skip padding inserted by the server */
+            //ptr += 4;
+
+            /* Marker Error */
+            float fError = 0.0f; memcpy(&fError, ptr, 4); ptr += 4;
+            //printf("Marker error: %3.2f\n", fError);
+
+            /* params */
+            short params = 0;
+            memcpy(&params, ptr, 2); ptr += 2;
+            bool bTrackingValid = params & 0x01;
+        }
+
+        /* Version 2.1 and later */
+        int skeletonCount = 0;
+        memcpy(&skeletonCount, ptr, 4);
+        ptr += 4;
+        //printf("Skeleton Count: %d\n",skeletonCount);
+        for (int i = 0; i < skeletonCount; i++) {
+            int temp_id = 0;
+            memcpy(&temp_id, ptr, 4);
+            ptr += 4;
+            //printf(" ID:%d\n",temp_id);
+            int sk_rb_count = 0;
+            memcpy(&sk_rb_count, ptr, 4);
+            //printf("Skeleton rb Count: %d\n",sk_rb_count);
+            ptr += 4; //rigidbodycount
+            ptr += 38*sk_rb_count; //rigidbody unpack for skeleton (useless)
+        }
+
+        /* Version 2.3 and later */
+        int labeledMarkerCount = 0;
+        memcpy(&labeledMarkerCount, ptr, 4);
+        ptr += 4;
+        //printf("Labeled Marker Count: %d\n",labeledMarkerCount);
+        //printf("End Packet\n----------------\n");
+        return 1;
+    } else if (msgid == 5) {
+        /* MODELDEF */
+        //printf("model something\n");
+        return 1;
+    } else if (msgid == 1) {
+        /* PINGRESPONSE */
+        //printf("ping response\n");
+        return 1;
+    //} else if (msgid ==)
+    } else {
+        //printf("some types else not important\n");
+        return 0;
+    }
+    
+/*
+    // Position and orientation
     if (msgid == 7)
     {
         printf("\nBegin Packet\n---------------------\n");
@@ -321,6 +473,6 @@ int unpack(char *pdata, demo_test::pos_data *pos)
     {
         printf("unrecognized packet\n");
         return -1;
-    }
+    } */
 
 }

@@ -1,0 +1,42 @@
+# param of teleop_ctrl_mask
+
+uint8 MASK_ARM_DISARM = 0
+uint8 MASK_FLIGHT_MODE = 1
+uint8 MASK_HOVER_POS = 2
+uint8 MASK_WASD = 4
+
+# base_control: arm and takeoff / land and disarm / force disarm
+
+uint8 ARM_TAKEOFF = 0
+uint8 LAND_DISARM = 1
+uint8 FORCE_DISARM = 2
+
+# flight mode
+
+uint8 MODE_OFFBOARD = 0
+uint8 MODE_TRAJECT = 1
+uint8 MODE_WHYCON = 2
+
+# keyboard WASDQE
+
+uint8 TELEOP_W = 0
+uint8 TELEOP_A = 1
+uint8 TELEOP_S = 2
+uint8 TELEOP_D = 4
+uint8 TELEOP_Q = 8
+uint8 TELEOP_E = 16
+uint8 TELEOP_J = 32 
+uint8 TELEOP_K = 64
+
+
+uint8 teleop_ctrl_mask
+uint8 base_contrl
+uint8 flight_mode
+float32 hover_pos_x
+float32 hover_pos_y
+float32 hover_pos_z
+float32 hover_pos_yaw
+uint8 teleop_keyboard
+---
+bool success
+uint8 result

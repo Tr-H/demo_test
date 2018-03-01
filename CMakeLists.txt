@@ -9,7 +9,7 @@ find_package(catkin REQUIRED COMPONENTS
   rospy
   std_msgs
   mavros_msgs
-message_generation
+  message_generation
 )
 
 ## System dependencies are found with CMake's conventions
@@ -59,7 +59,7 @@ endif()
 #   Message2.msg
 # )
  add_message_files(
-   DIRECTORY msg
+   #DIRECTORY msg
    FILES
    pos_data.msg
    pos_write_data.msg
@@ -79,11 +79,11 @@ endif()
    ekf_leader.msg
  )
 ## Generate services in the 'srv' folder
-# add_service_files(
-#   FILES
-#   Service1.srv
+ add_service_files(
+   FILES
+   teleop_ctrl.srv
 #   Service2.srv
-# )
+ )
 
 ## Generate actions in the 'action' folder
 # add_action_files(
@@ -136,6 +136,7 @@ include_directories(
 #add_executable(demo_hello src/demo_hello.cpp)
 #add_executable(demo_udp src/demo_udp.cpp)
 add_executable(ros_client src/ros_client.cpp)
+add_executable(ros_client_2 src/ros_client_2.cpp)
 #add_executable(demo_client src/demo_client.cpp)
 #add_executable(demo_gcs3 src/demo_gcs3.cpp)
 #add_executable(demo_gcs4 src/demo_gcs4.cpp)
@@ -183,6 +184,7 @@ add_executable(mavros_att_test_without_dynamic src/mavros_att_test_without_dynam
 #target_link_libraries(demo_hello ${catkin_LIBRARIES})
 #target_link_libraries(demo_udp ${catkin_LIBRARIES})
 target_link_libraries(ros_client ${catkin_LIBRARIES})
+target_link_libraries(ros_client_2 ${catkin_LIBRARIES})
 #target_link_libraries(demo_client ${catkin_LIBRARIES})
 #target_link_libraries(demo_gcs3 ${catkin_LIBRARIES})
 #target_link_libraries(demo_gcs4 ${catkin_LIBRARIES})
@@ -239,9 +241,11 @@ target_link_libraries(mavros_att_test_without_dynamic ${catkin_LIBRARIES})
 catkin_install_python(PROGRAMS
     scripts/demo_test_py.py 
     scripts/demo_test_py2.py 
-    scripts/mocap_send.py 
+    scripts/mocap_send.py
+    scripts/mocap_send_1.py 
     scripts/offboard_test.py 
-    scripts/teleop_keyboard_control.py 
+    scripts/teleop_keyboard_control.py
+    scripts/teleop_keyboard_control_1.py
     DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
     )
 ## Mark executables and/or libraries for installation

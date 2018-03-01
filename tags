@@ -25,6 +25,10 @@ KEYCODE_S	src/keyboard_test.cpp	14;"	d	file:
 KEYCODE_S_CAP	src/keyboard_test.cpp	19;"	d	file:
 KEYCODE_W	src/keyboard_test.cpp	12;"	d	file:
 KEYCODE_W_CAP	src/keyboard_test.cpp	20;"	d	file:
+LCM_FINGERPRINT	scripts/lcm/drake/example_t.java	/^    public static final long LCM_FINGERPRINT;$/;"	f	class:example_t
+LCM_FINGERPRINT	scripts/lcm/exlcm/example_t.java	/^    public static final long LCM_FINGERPRINT;$/;"	f	class:example_t
+LCM_FINGERPRINT_BASE	scripts/lcm/drake/example_t.java	/^    public static final long LCM_FINGERPRINT_BASE = 0xe8176c8f456d469fL;$/;"	f	class:example_t
+LCM_FINGERPRINT_BASE	scripts/lcm/exlcm/example_t.java	/^    public static final long LCM_FINGERPRINT_BASE = 0xe8176c8f456d469fL;$/;"	f	class:example_t
 MCAST_ADDR	src/client.cpp	19;"	d	file:
 MCAST_ADDR	src/ros_client.cpp	42;"	d	file:
 MCAST_PORT	src/client.cpp	18;"	d	file:
@@ -46,6 +50,10 @@ MODEMDEVICE1	src/demo_send_thrd.cpp	20;"	d	file:
 MODEMDEVICE2	src/demo_gcs_API.cpp	25;"	d	file:
 MODEMDEVICE3	src/demo_gcs_API.cpp	26;"	d	file:
 MODEMDEVICE_NAME	src/demo_gcs_API.cpp	/^char *MODEMDEVICE_NAME;$/;"	v
+NAME	scripts/demo_test_py.py	/^NAME = 'demo_test_py'$/;"	v
+NAME	scripts/demo_test_py2.py	/^NAME = 'demo_test_py2'$/;"	v
+NAME	scripts/mocap_send.py	/^NAME = 'mocap_send_py'$/;"	v
+NAME	scripts/mocap_send_1.py	/^NAME = 'mocap_send_py'$/;"	v
 PI	src/demo_rr.cpp	17;"	d	file:
 P_POS	src/demo_read_data2.cpp	18;"	d	file:
 P_POS	src/demo_read_data3.cpp	17;"	d	file:
@@ -53,6 +61,7 @@ P_POS	src/demo_read_data4.cpp	17;"	d	file:
 P_POS	src/demo_read_data_traj_e.cpp	17;"	d	file:
 P_POS	src/demo_read_data_traj_e2.cpp	17;"	d	file:
 Q_att	src/mavros_att_test.cpp	/^struct Q_att$/;"	s	file:
+Q_att	src/mavros_att_test_without_dynamic.cpp	/^struct Q_att$/;"	s	file:
 SmartCarKeyboardTeleopNode	src/keyboard_test.cpp	/^        SmartCarKeyboardTeleopNode()$/;"	f	class:SmartCarKeyboardTeleopNode
 SmartCarKeyboardTeleopNode	src/keyboard_test.cpp	/^class SmartCarKeyboardTeleopNode$/;"	c	file:
 T	src/demo_yuan_xy.cpp	17;"	d	file:
@@ -70,12 +79,32 @@ VEL_SP_Z	src/demo_read_data_traj_e2.cpp	/^float VEL_SP_Z = 0;$/;"	v
 X25_INIT_CRC	src/checksum.h	21;"	d
 X25_VALIDATE_CRC	src/checksum.h	22;"	d
 _CHECKSUM_H_	src/checksum.h	6;"	d
+__init__	scripts/demo_test_py.py	/^    def __init__(self,stopevt = None,name = 'mavsend',th_num = 0):$/;"	m	class:send_thread
+__init__	scripts/exlcm/example_t.py	/^    def __init__(self):$/;"	m	class:example_t
+__slots__	scripts/exlcm/example_t.py	/^    __slots__ = ["timestamp", "num", "position", "orientation"]$/;"	v	class:example_t
+_decodeRecursive	scripts/lcm/drake/example_t.java	/^    public void _decodeRecursive(DataInput ins) throws IOException$/;"	m	class:example_t
+_decodeRecursive	scripts/lcm/exlcm/example_t.java	/^    public void _decodeRecursive(DataInput ins) throws IOException$/;"	m	class:example_t
+_decodeRecursiveFactory	scripts/lcm/drake/example_t.java	/^    public static drake.example_t _decodeRecursiveFactory(DataInput ins) throws IOException$/;"	m	class:example_t
+_decodeRecursiveFactory	scripts/lcm/exlcm/example_t.java	/^    public static exlcm.example_t _decodeRecursiveFactory(DataInput ins) throws IOException$/;"	m	class:example_t
+_decode_one	scripts/exlcm/example_t.py	/^    _decode_one = staticmethod(_decode_one)$/;"	v	class:example_t
+_decode_one	scripts/exlcm/example_t.py	/^    def _decode_one(buf):$/;"	m	class:example_t
 _ekf_leader	src/ekf_test1.cpp	/^demo_test::ekf_leader _ekf_leader;$/;"	v
 _ekf_leader	src/ekf_test2.cpp	/^demo_test::ekf_leader _ekf_leader;$/;"	v
 _ekf_status	src/demo_ekf_esitimator1.cpp	/^demo_test::ekf_status _ekf_status;$/;"	v
+_encodeRecursive	scripts/lcm/drake/example_t.java	/^    public void _encodeRecursive(DataOutput outs) throws IOException$/;"	m	class:example_t
+_encodeRecursive	scripts/lcm/exlcm/example_t.java	/^    public void _encodeRecursive(DataOutput outs) throws IOException$/;"	m	class:example_t
+_encode_one	scripts/exlcm/example_t.py	/^    def _encode_one(self, buf):$/;"	m	class:example_t
 _formation_shape	src/demo_fandl2.cpp	/^typedef struct _formation_shape$/;"	s	file:
 _formation_shape	src/demo_nwforma_test1.cpp	/^typedef struct _formation_shape$/;"	s	file:
 _formation_shape	src/demo_nwforma_test2.cpp	/^typedef struct _formation_shape$/;"	s	file:
+_get_hash_recursive	scripts/exlcm/example_t.py	/^    _get_hash_recursive = staticmethod(_get_hash_recursive)$/;"	v	class:example_t
+_get_hash_recursive	scripts/exlcm/example_t.py	/^    def _get_hash_recursive(parents):$/;"	m	class:example_t
+_get_packed_fingerprint	scripts/exlcm/example_t.py	/^    _get_packed_fingerprint = staticmethod(_get_packed_fingerprint)$/;"	v	class:example_t
+_get_packed_fingerprint	scripts/exlcm/example_t.py	/^    def _get_packed_fingerprint():$/;"	m	class:example_t
+_hash	scripts/exlcm/example_t.py	/^    _hash = None$/;"	v	class:example_t
+_hashRecursive	scripts/lcm/drake/example_t.java	/^    public static long _hashRecursive(ArrayList<Class<?>> classes)$/;"	m	class:example_t
+_hashRecursive	scripts/lcm/exlcm/example_t.java	/^    public static long _hashRecursive(ArrayList<Class<?>> classes)$/;"	m	class:example_t
+_packed_fingerprint	scripts/exlcm/example_t.py	/^    _packed_fingerprint = None$/;"	v	class:example_t
 _pos_type_temp	src/demo_gcs_API.cpp	/^typedef struct _pos_type_temp$/;"	s	file:
 _pos_type_temp	src/mavros_send.cpp	/^typedef struct _pos_type_temp$/;"	s	file:
 _pos_type_temp	src/mavros_send_multi.cpp	/^typedef struct _pos_type_temp$/;"	s	file:
@@ -84,6 +113,14 @@ _pos_type_temp	src/mavros_send_multi3.cpp	/^typedef struct _pos_type_temp$/;"	s	
 _pos_type_temp	src/mavros_send_multi4.cpp	/^typedef struct _pos_type_temp$/;"	s	file:
 _pos_type_temp	src/mavros_send_multi5.cpp	/^typedef struct _pos_type_temp$/;"	s	file:
 _q_temp	src/demo_collect.cpp	/^typedef struct _q_temp$/;"	s	file:
+args	scripts/teleop_keyboard_control.py	/^    args = parser.parse_args()$/;"	v
+args	scripts/teleop_keyboard_control_1.py	/^    args = parser.parse_args()$/;"	v
+args	scripts/teleop_keyboard_control_2.py	/^    args = parser.parse_args()$/;"	v
+args	scripts/teleop_keyboard_control_3.py	/^    args = parser.parse_args()$/;"	v
+arm_and_takeoff	scripts/teleop_keyboard_control.py	/^def arm_and_takeoff():$/;"	f
+arm_and_takeoff	scripts/teleop_keyboard_control_1.py	/^def arm_and_takeoff():$/;"	f
+arm_and_takeoff	scripts/teleop_keyboard_control_2.py	/^def arm_and_takeoff():$/;"	f
+arm_and_takeoff	scripts/teleop_keyboard_control_3.py	/^def arm_and_takeoff():$/;"	f
 attitude_feedback1	src/demo_gcs_API.cpp	/^demo_test::attitude_feedback attitude_feedback1;$/;"	v
 attitude_feedback_name	src/demo_gcs_API.cpp	/^char *attitude_feedback_name;$/;"	v
 attitude_feedback_sub	src/demo_gcs_API.cpp	/^ros::Publisher attitude_feedback_sub;$/;"	v
@@ -95,12 +132,17 @@ buf	src/demo_rr.cpp	/^static unsigned char  buf[256];  $/;"	v	file:
 buf_now	src/demo_gcs_API.cpp	/^unsigned char  buf_now[32];$/;"	v
 buf_point	src/demo_gcs_API.cpp	/^unsigned char  buf_point; $/;"	v
 buff_i	src/demo_gcs_API.cpp	/^int buff_i=0;$/;"	v
+callback	scripts/demo_test_py.py	/^def  callback(data):$/;"	f
+callback	scripts/demo_test_py2.py	/^def  callback(data):$/;"	f
+callback	scripts/mocap_send.py	/^def  callback(data):$/;"	f
+callback	scripts/mocap_send_1.py	/^def  callback(data):$/;"	f
 chatter_pub	src/demo_fandl.cpp	/^ros::Publisher chatter_pub[4];$/;"	v
 chatter_pub	src/demo_fandl2.cpp	/^ros::Publisher chatter_pub[4];$/;"	v
 chatter_pub	src/demo_nwforma_test1.cpp	/^ros::Publisher chatter_pub[4];$/;"	v
 chatter_pub	src/demo_nwforma_test2.cpp	/^ros::Publisher chatter_pub[4];$/;"	v
 chatter_pub2	src/demo_nwforma_test1.cpp	/^ros::Publisher chatter_pub2[4];$/;"	v
 chatter_pub2	src/demo_nwforma_test2.cpp	/^ros::Publisher chatter_pub2[4];$/;"	v
+check_print_param	scripts/mocap_send_1.py	/^def check_print_param():$/;"	f
 cmdvel_	src/keyboard_test.cpp	/^        geometry_msgs::Twist cmdvel_;$/;"	m	class:SmartCarKeyboardTeleopNode	file:
 code_send	src/mavros_send.cpp	/^void code_send()$/;"	f
 code_send	src/mavros_send_multi.cpp	/^void code_send()$/;"	f
@@ -115,12 +157,26 @@ code_send_pub	src/mavros_send_multi3.cpp	/^ros::Publisher code_send_pub;$/;"	v
 code_send_pub	src/mavros_send_multi4.cpp	/^ros::Publisher code_send_pub;$/;"	v
 code_send_pub	src/mavros_send_multi5.cpp	/^ros::Publisher code_send_pub;$/;"	v
 code_time1	src/mavros_send_multi5.cpp	/^demo_test::pos_write_data2 code_time1;$/;"	v
+command_send	scripts/teleop_keyboard_control.py	/^def command_send():$/;"	f
+command_send	scripts/teleop_keyboard_control_1.py	/^def command_send():$/;"	f
+command_send	scripts/teleop_keyboard_control_2.py	/^def command_send():$/;"	f
+command_send	scripts/teleop_keyboard_control_3.py	/^def command_send():$/;"	f
 cooked	src/keyboard_test.cpp	/^struct termios cooked, raw;$/;"	v	typeref:struct:termios
+copy	scripts/lcm/drake/example_t.java	/^    public drake.example_t copy()$/;"	m	class:example_t
+copy	scripts/lcm/exlcm/example_t.java	/^    public exlcm.example_t copy()$/;"	m	class:example_t
 crc_accumulate	src/checksum.h	/^static inline void crc_accumulate(uint8_t data, uint16_t *crcAccum)$/;"	f
 crc_accumulate_buffer	src/checksum.h	/^static inline void crc_accumulate_buffer(uint16_t *crcAccum, const char *pBuffer, uint16_t length)$/;"	f
 crc_calculate	src/checksum.h	/^static inline uint16_t crc_calculate(const uint8_t* pBuffer, uint16_t length)$/;"	f
 crc_init	src/checksum.h	/^static inline void crc_init(uint16_t* crcAccum)$/;"	f
+current_state	scripts/offboard_test.py	/^current_state = State()$/;"	v
+current_state	scripts/teleop_keyboard_control.py	/^current_state = State()$/;"	v
+current_state	scripts/teleop_keyboard_control_1.py	/^current_state = State()$/;"	v
+current_state	scripts/teleop_keyboard_control_2.py	/^current_state = State()$/;"	v
+current_state	scripts/teleop_keyboard_control_3.py	/^current_state = State()$/;"	v
 current_state	src/mavros_att_test.cpp	/^mavros_msgs::State current_state;$/;"	v
+current_state	src/mavros_att_test_without_dynamic.cpp	/^mavros_msgs::State current_state;$/;"	v
+decode	scripts/exlcm/example_t.py	/^    decode = staticmethod(decode)$/;"	v	class:example_t
+decode	scripts/exlcm/example_t.py	/^    def decode(data):$/;"	m	class:example_t
 delta_old_rr	src/demo_read_data.cpp	/^float delta_old_rr = 0;$/;"	v
 delta_old_x	src/demo_read_data.cpp	/^float delta_old_x = 0;$/;"	v
 delta_old_y	src/demo_read_data.cpp	/^float delta_old_y = 0;$/;"	v
@@ -152,16 +208,33 @@ dist_r	src/demo_read_data.cpp	/^float dist_r=0;$/;"	v
 done	src/keyboard_test.cpp	/^bool done;$/;"	v
 dpos_formation	src/demo_nwforma_test1.cpp	/^demo_test::formation_data dpos_formation;$/;"	v
 dpos_formation	src/demo_nwforma_test2.cpp	/^demo_test::formation_data dpos_formation;$/;"	v
+drake	scripts/lcm/drake/example_t.java	/^package drake;$/;"	p
 ekf_status_pub	src/demo_ekf_esitimator1.cpp	/^ros::Publisher ekf_status_pub;$/;"	v
+encode	scripts/exlcm/example_t.py	/^    def encode(self):$/;"	m	class:example_t
+encode	scripts/lcm/drake/example_t.java	/^    public void encode(DataOutput outs) throws IOException$/;"	m	class:example_t
+encode	scripts/lcm/exlcm/example_t.java	/^    public void encode(DataOutput outs) throws IOException$/;"	m	class:example_t
 err	src/demo_traj_write.cpp	/^float err[3];$/;"	v
 err	src/demo_traj_yuan.cpp	/^float err[3];$/;"	v
 err	src/demo_yuan_xy.cpp	/^float err[3];$/;"	v
+example_t	scripts/exlcm/example_t.py	/^class example_t(object):$/;"	c
+example_t	scripts/lcm/drake/example_t.java	/^    public example_t()$/;"	m	class:example_t
+example_t	scripts/lcm/drake/example_t.java	/^    public example_t(DataInput ins) throws IOException$/;"	m	class:example_t
+example_t	scripts/lcm/drake/example_t.java	/^    public example_t(byte[] data) throws IOException$/;"	m	class:example_t
+example_t	scripts/lcm/drake/example_t.java	/^public final class example_t implements lcm.lcm.LCMEncodable$/;"	c
+example_t	scripts/lcm/exlcm/example_t.java	/^    public example_t()$/;"	m	class:example_t
+example_t	scripts/lcm/exlcm/example_t.java	/^    public example_t(DataInput ins) throws IOException$/;"	m	class:example_t
+example_t	scripts/lcm/exlcm/example_t.java	/^    public example_t(byte[] data) throws IOException$/;"	m	class:example_t
+example_t	scripts/lcm/exlcm/example_t.java	/^public final class example_t implements lcm.lcm.LCMEncodable$/;"	c
+exlcm	scripts/lcm/exlcm/example_t.java	/^package exlcm;$/;"	p
 fd1	src/data_record.cpp	/^FILE *fd1;$/;"	v
 fd2	src/data_record.cpp	/^FILE *fd2; $/;"	v
 fd_setup_port	src/demo_gcs4.cpp	/^	int fd_setup_port;$/;"	m	class:myGroundCS	file:
 fd_setup_port	src/demo_gcs5.cpp	/^	int fd_setup_port;$/;"	m	class:myGroundCS	file:
 fd_setup_port	src/demo_gcs_API.cpp	/^	int fd_setup_port;$/;"	m	class:myGroundCS	file:
 fd_setup_port	src/demo_rr.cpp	/^    int fd_setup_port; $/;"	m	class:myGroundCS	file:
+fixed_hover_enable	scripts/teleop_keyboard_control_1.py	/^def fixed_hover_enable():$/;"	f
+fixed_hover_enable	scripts/teleop_keyboard_control_2.py	/^def fixed_hover_enable():$/;"	f
+fixed_hover_enable	scripts/teleop_keyboard_control_3.py	/^def fixed_hover_enable():$/;"	f
 flag	src/demo_gcs3.cpp	/^static bool flag = true;$/;"	v	file:
 flag_dpos	src/demo_pos_write_multi.cpp	/^	bool flag_dpos;$/;"	m	class:myStatusRewrite	file:
 flag_flag	src/demo_pos_write_multi.cpp	/^	bool flag_flag;$/;"	m	class:myStatusRewrite	file:
@@ -237,12 +310,21 @@ freq_mutex	src/mavros_send_multi2.cpp	/^boost::mutex freq_mutex;$/;"	v
 freq_mutex	src/mavros_send_multi3.cpp	/^boost::mutex freq_mutex;$/;"	v
 freq_mutex	src/mavros_send_multi4.cpp	/^boost::mutex freq_mutex;$/;"	v
 freq_mutex	src/mavros_send_multi5.cpp	/^boost::mutex freq_mutex;$/;"	v
+freq_send	scripts/demo_test_py2.py	/^freq_send = float(60)$/;"	v
+freq_send	scripts/mocap_send.py	/^freq_send = int(60)$/;"	v
+freq_send	scripts/mocap_send_1.py	/^freq_send = int(60)$/;"	v
 from_euler	src/mavros_att_test.cpp	/^struct Q_att from_euler(float roll, float pitch, float yaw) $/;"	f
+from_euler	src/mavros_att_test_without_dynamic.cpp	/^struct Q_att from_euler(float roll, float pitch, float yaw) $/;"	f
+getKey	scripts/teleop_keyboard_control.py	/^def getKey():$/;"	f
+getKey	scripts/teleop_keyboard_control_1.py	/^def getKey():$/;"	f
+getKey	scripts/teleop_keyboard_control_2.py	/^def getKey():$/;"	f
+getKey	scripts/teleop_keyboard_control_3.py	/^def getKey():$/;"	f
 gloabl_follow1_id	src/demo_fandl.cpp	/^int gloabl_follow1_id;$/;"	v
 gloabl_follow1_id	src/demo_fandl2.cpp	/^int gloabl_follow1_id;$/;"	v
 gloabl_follow1_id	src/demo_nwforma_test1.cpp	/^int gloabl_follow1_id;$/;"	v
 gloabl_follow1_id	src/demo_nwforma_test2.cpp	/^int gloabl_follow1_id;$/;"	v
 global_att_throttle	src/mavros_att_test.cpp	/^std_msgs::Float64 global_att_throttle;$/;"	v
+global_att_throttle	src/mavros_att_test_without_dynamic.cpp	/^std_msgs::Float64 global_att_throttle;$/;"	v
 global_formation_yaw	src/demo_nwforma_test1.cpp	/^float global_formation_yaw = -1.57;$/;"	v
 global_formation_yaw	src/demo_nwforma_test2.cpp	/^float global_formation_yaw = -1.57;$/;"	v
 global_i	src/mavros_send.cpp	/^float global_i = 1;$/;"	v
@@ -262,7 +344,12 @@ global_leader_id	src/demo_fandl.cpp	/^int global_leader_id; $/;"	v
 global_leader_id	src/demo_fandl2.cpp	/^int global_leader_id; $/;"	v
 global_leader_id	src/demo_nwforma_test1.cpp	/^int global_leader_id; $/;"	v
 global_leader_id	src/demo_nwforma_test2.cpp	/^int global_leader_id; $/;"	v
+global_num	scripts/demo_test_py2.py	/^global_num = 0$/;"	v
 global_pitch	src/demo_gcs_API.cpp	/^float global_pitch=0;$/;"	v
+global_pos	scripts/demo_test_py2.py	/^global_pos = []$/;"	v
+global_pos_data	scripts/mocap_send.py	/^global_pos_data = pos_data()$/;"	v
+global_pos_data	scripts/mocap_send_1.py	/^global_pos_data = pos_data()$/;"	v
+global_q	scripts/demo_test_py2.py	/^global_q = []$/;"	v
 global_roll	src/demo_gcs_API.cpp	/^float global_roll=0;$/;"	v
 global_type_temp	src/demo_gcs_API.cpp	/^ pos_sp_type_temp global_type_temp;$/;"	v
 global_type_temp	src/mavros_send.cpp	/^pos_sp_type_temp global_type_temp;$/;"	v
@@ -273,6 +360,30 @@ global_type_temp	src/mavros_send_multi4.cpp	/^ pos_sp_type_temp global_type_temp
 global_type_temp	src/mavros_send_multi5.cpp	/^ pos_sp_type_temp global_type_temp;$/;"	v
 global_yaw	src/demo_gcs_API.cpp	/^float global_yaw=0;$/;"	v
 have_update	src/demo_ekf_esitimator1.cpp	/^bool have_update = false;$/;"	v
+home_init_done	scripts/teleop_keyboard_control.py	/^home_init_done = False$/;"	v
+home_init_done	scripts/teleop_keyboard_control_1.py	/^home_init_done = False$/;"	v
+home_init_done	scripts/teleop_keyboard_control_2.py	/^home_init_done = False$/;"	v
+home_init_done	scripts/teleop_keyboard_control_3.py	/^home_init_done = False$/;"	v
+home_p_cb	scripts/teleop_keyboard_control.py	/^def home_p_cb(data):$/;"	f
+home_p_cb	scripts/teleop_keyboard_control_1.py	/^def home_p_cb(data):$/;"	f
+home_p_cb	scripts/teleop_keyboard_control_2.py	/^def home_p_cb(data):$/;"	f
+home_p_cb	scripts/teleop_keyboard_control_3.py	/^def home_p_cb(data):$/;"	f
+home_x	scripts/teleop_keyboard_control.py	/^home_x = 0.0$/;"	v
+home_x	scripts/teleop_keyboard_control_1.py	/^home_x = 0.0$/;"	v
+home_x	scripts/teleop_keyboard_control_2.py	/^home_x = 0.0$/;"	v
+home_x	scripts/teleop_keyboard_control_3.py	/^home_x = 0.0$/;"	v
+home_y	scripts/teleop_keyboard_control.py	/^home_y = 0.0$/;"	v
+home_y	scripts/teleop_keyboard_control_1.py	/^home_y = 0.0$/;"	v
+home_y	scripts/teleop_keyboard_control_2.py	/^home_y = 0.0$/;"	v
+home_y	scripts/teleop_keyboard_control_3.py	/^home_y = 0.0$/;"	v
+home_yaw	scripts/teleop_keyboard_control.py	/^home_yaw = -1.57$/;"	v
+home_yaw	scripts/teleop_keyboard_control_1.py	/^home_yaw = -1.57$/;"	v
+home_yaw	scripts/teleop_keyboard_control_2.py	/^home_yaw = -1.57$/;"	v
+home_yaw	scripts/teleop_keyboard_control_3.py	/^home_yaw = -1.57$/;"	v
+home_z	scripts/teleop_keyboard_control.py	/^home_z = 0.0$/;"	v
+home_z	scripts/teleop_keyboard_control_1.py	/^home_z = 0.0$/;"	v
+home_z	scripts/teleop_keyboard_control_2.py	/^home_z = 0.0$/;"	v
+home_z	scripts/teleop_keyboard_control_3.py	/^home_z = 0.0$/;"	v
 i	src/demo_rr.cpp	/^    int i;$/;"	m	class:myGroundCS	file:
 i_number	src/demo_read_data2.cpp	/^int i_number = 0;$/;"	v
 i_number	src/demo_read_data3.cpp	/^int i_number = 0;$/;"	v
@@ -291,7 +402,24 @@ i_number_read_main	src/demo_read_data4.cpp	/^int i_number_read_main = 0;$/;"	v
 i_number_read_main	src/demo_read_data_traj_e.cpp	/^int i_number_read_main = 0;$/;"	v
 i_number_read_main	src/demo_read_data_traj_e2.cpp	/^int i_number_read_main = 0;$/;"	v
 id	src/demo_pos_write_multi.cpp	/^	int id;$/;"	m	class:myStatusRewrite	file:
+id_uav	scripts/offboard_test.py	/^id_uav = int(1)$/;"	v
+id_uav	scripts/teleop_keyboard_control.py	/^    id_uav = args.idofuav$/;"	v
+id_uav	scripts/teleop_keyboard_control.py	/^id_uav = 1$/;"	v
+id_uav	scripts/teleop_keyboard_control_1.py	/^    id_uav = args.idofuav$/;"	v
+id_uav	scripts/teleop_keyboard_control_1.py	/^id_uav = 1$/;"	v
+id_uav	scripts/teleop_keyboard_control_2.py	/^    id_uav = args.idofuav$/;"	v
+id_uav	scripts/teleop_keyboard_control_2.py	/^id_uav = 1$/;"	v
+id_uav	scripts/teleop_keyboard_control_3.py	/^    id_uav = args.idofuav$/;"	v
+id_uav	scripts/teleop_keyboard_control_3.py	/^id_uav = 1$/;"	v
+init_home_point	scripts/teleop_keyboard_control.py	/^def init_home_point():$/;"	f
+init_home_point	scripts/teleop_keyboard_control_1.py	/^def init_home_point():$/;"	f
+init_home_point	scripts/teleop_keyboard_control_2.py	/^def init_home_point():$/;"	f
+init_home_point	scripts/teleop_keyboard_control_3.py	/^def init_home_point():$/;"	f
 initialize	src/demo_pos_write_multi.cpp	/^	void initialize()$/;"	f	class:myStatusRewrite
+is_arm_offb	scripts/teleop_keyboard_control.py	/^is_arm_offb = False$/;"	v
+is_arm_offb	scripts/teleop_keyboard_control_1.py	/^is_arm_offb = False$/;"	v
+is_arm_offb	scripts/teleop_keyboard_control_2.py	/^is_arm_offb = False$/;"	v
+is_arm_offb	scripts/teleop_keyboard_control_3.py	/^is_arm_offb = False$/;"	v
 jiao	src/demo_rr.cpp	/^    float jiao,speed;$/;"	m	class:myGroundCS	file:
 jiaoyan	src/demo_rr.cpp	/^    unsigned char jiaoyan,jiaoyan1; $/;"	m	class:myGroundCS	file:
 jiaoyan1	src/demo_rr.cpp	/^    unsigned char jiaoyan,jiaoyan1; $/;"	m	class:myGroundCS	file:
@@ -299,8 +427,32 @@ jiexi	src/demo_rr.cpp	/^void myGroundCS::jiexi()$/;"	f	class:myGroundCS
 jiexi1	src/demo_rr.cpp	/^void myGroundCS::jiexi1()$/;"	f	class:myGroundCS
 keyboardLoop	src/keyboard_test.cpp	/^void SmartCarKeyboardTeleopNode::keyboardLoop()$/;"	f	class:SmartCarKeyboardTeleopNode
 kfd	src/keyboard_test.cpp	/^int kfd = 0;$/;"	v
+land_and_disarm	scripts/teleop_keyboard_control.py	/^def land_and_disarm():$/;"	f
+land_and_disarm	scripts/teleop_keyboard_control_1.py	/^def land_and_disarm():$/;"	f
+land_and_disarm	scripts/teleop_keyboard_control_2.py	/^def land_and_disarm():$/;"	f
+land_and_disarm	scripts/teleop_keyboard_control_3.py	/^def land_and_disarm():$/;"	f
+last_get_param_time	scripts/mocap_send_1.py	/^last_get_param_time = rospy.Time()$/;"	v
+last_receive_time	scripts/mocap_send.py	/^last_receive_time = rospy.Time()$/;"	v
+last_receive_time	scripts/mocap_send_1.py	/^last_receive_time = rospy.Time()$/;"	v
+last_seq	scripts/mocap_send.py	/^last_seq = 0$/;"	v
+last_seq	scripts/mocap_send_1.py	/^last_seq = 0$/;"	v
+lcm_send	scripts/mocap_send.py	/^lcm_send = lcm.LCM()$/;"	v
 leader_pub	src/ekf_test1.cpp	/^ros::Publisher leader_pub;$/;"	v
 leader_pub	src/ekf_test2.cpp	/^ros::Publisher leader_pub;$/;"	v
+limit_fram_xy	scripts/teleop_keyboard_control.py	/^def limit_fram_xy(fram_x,fram_y):$/;"	f
+limit_fram_xy	scripts/teleop_keyboard_control_1.py	/^def limit_fram_xy(fram_x,fram_y):$/;"	f
+limit_fram_xy	scripts/teleop_keyboard_control_2.py	/^def limit_fram_xy(fram_x,fram_y):$/;"	f
+limit_fram_xy	scripts/teleop_keyboard_control_3.py	/^def limit_fram_xy(fram_x,fram_y):$/;"	f
+limit_fram_z	scripts/teleop_keyboard_control.py	/^def limit_fram_z(fram_z):$/;"	f
+limit_fram_z	scripts/teleop_keyboard_control_1.py	/^def limit_fram_z(fram_z):$/;"	f
+limit_fram_z	scripts/teleop_keyboard_control_2.py	/^def limit_fram_z(fram_z):$/;"	f
+limit_fram_z	scripts/teleop_keyboard_control_3.py	/^def limit_fram_z(fram_z):$/;"	f
+limit_yaw	scripts/teleop_keyboard_control.py	/^def limit_yaw(yaw):$/;"	f
+limit_yaw	scripts/teleop_keyboard_control_1.py	/^def limit_yaw(yaw):$/;"	f
+limit_yaw	scripts/teleop_keyboard_control_2.py	/^def limit_yaw(yaw):$/;"	f
+limit_yaw	scripts/teleop_keyboard_control_3.py	/^def limit_yaw(yaw):$/;"	f
+listener	scripts/run_with_turtle.py	/^def listener():$/;"	f
+listener	scripts/run_with_turtle.py~	/^def listener():$/;"	f
 main	src/Server.cpp	/^int main(int argc, char* argv[])$/;"	f
 main	src/client.cpp	/^int main(void)$/;"	f
 main	src/data_record.cpp	/^int main(int argc, char **argv)$/;"	f
@@ -339,6 +491,7 @@ main	src/ekf_test1.cpp	/^int main(int argc, char **argv)$/;"	f
 main	src/ekf_test2.cpp	/^int main(int argc, char **argv)$/;"	f
 main	src/keyboard_test.cpp	/^int main(int argc, char** argv)$/;"	f
 main	src/mavros_att_test.cpp	/^int main(int argc, char **argv)$/;"	f
+main	src/mavros_att_test_without_dynamic.cpp	/^int main(int argc, char **argv)$/;"	f
 main	src/mavros_send.cpp	/^int main(int argc, char **argv)$/;"	f
 main	src/mavros_send_multi.cpp	/^int main(int argc, char **argv)$/;"	f
 main	src/mavros_send_multi2.cpp	/^int main(int argc, char **argv)$/;"	f
@@ -362,7 +515,20 @@ mocap_send_pub	src/mavros_send_multi2.cpp	/^ros::Publisher mocap_send_pub;$/;"	v
 mocap_send_pub	src/mavros_send_multi3.cpp	/^ros::Publisher mocap_send_pub;$/;"	v
 mocap_send_pub	src/mavros_send_multi4.cpp	/^ros::Publisher mocap_send_pub;$/;"	v
 mocap_send_pub	src/mavros_send_multi5.cpp	/^ros::Publisher mocap_send_pub;$/;"	v
+mocap_to_mav	scripts/mocap_send_1.py	/^def mocap_to_mav():$/;"	f
 mocapdata_cb	src/data_record.cpp	/^void mocapdata_cb(const demo_test::pos_data& pos)$/;"	f
+moveBindings	scripts/teleop_keyboard_control.py	/^moveBindings = {$/;"	v
+moveBindings	scripts/teleop_keyboard_control_1.py	/^moveBindings = {$/;"	v
+moveBindings	scripts/teleop_keyboard_control_2.py	/^moveBindings = {$/;"	v
+moveBindings	scripts/teleop_keyboard_control_3.py	/^moveBindings = {$/;"	v
+mutexA	scripts/demo_test_py2.py	/^mutexA = threading.Lock()$/;"	v
+mutexA	scripts/mocap_send.py	/^mutexA = threading.Lock()$/;"	v
+mutexA	scripts/mocap_send_1.py	/^mutexA = threading.Lock()$/;"	v
+mutexA	scripts/teleop_keyboard_control.py	/^mutexA = threading.Lock()$/;"	v
+mutexA	scripts/teleop_keyboard_control_1.py	/^mutexA = threading.Lock()$/;"	v
+mutexA	scripts/teleop_keyboard_control_2.py	/^mutexA = threading.Lock()$/;"	v
+mutexA	scripts/teleop_keyboard_control_3.py	/^mutexA = threading.Lock()$/;"	v
+mutexA	scripts/test_quads_real3.py	/^mutexA = threading.Lock()$/;"	v
 myGroundCS	src/demo_gcs4.cpp	/^class myGroundCS $/;"	c	file:
 myGroundCS	src/demo_gcs4.cpp	/^myGroundCS::myGroundCS()$/;"	f	class:myGroundCS
 myGroundCS	src/demo_gcs5.cpp	/^class myGroundCS $/;"	c	file:
@@ -375,10 +541,30 @@ myStatusRewrite	src/demo_pos_write_multi.cpp	/^	myStatusRewrite() :$/;"	f	class:
 myStatusRewrite	src/demo_pos_write_multi.cpp	/^class myStatusRewrite$/;"	c	file:
 n_	src/keyboard_test.cpp	/^        ros::NodeHandle n_;$/;"	m	class:SmartCarKeyboardTeleopNode	file:
 n_rewrite	src/demo_pos_write_multi.cpp	/^	ros::NodeHandle n_rewrite;$/;"	m	class:myStatusRewrite	file:
+name_ros_node	scripts/teleop_keyboard_control.py	/^name_ros_node = 'teleop_keyboard_control{0}'$/;"	v
+name_ros_node	scripts/teleop_keyboard_control_1.py	/^name_ros_node = 'teleop_keyboard_control{0}'$/;"	v
+name_ros_node	scripts/teleop_keyboard_control_2.py	/^name_ros_node = 'teleop_keyboard_control{0}'$/;"	v
+name_ros_node	scripts/teleop_keyboard_control_3.py	/^name_ros_node = 'teleop_keyboard_control{0}'$/;"	v
 new_dpos_flag	src/demo_read_data.cpp	/^bool new_dpos_flag = false;$/;"	v
+num	scripts/lcm/drake/example_t.java	/^    public short num;$/;"	f	class:example_t
+num	scripts/lcm/exlcm/example_t.java	/^    public short num;$/;"	f	class:example_t
 num	src/client.cpp	/^    unsigned int num;$/;"	m	struct:rigid_pos	file:
 num_1	src/demo_rr.cpp	/^    int num_1;$/;"	m	class:myGroundCS	file:
 num_2	src/demo_rr.cpp	/^    int num_2;$/;"	m	class:myGroundCS	file:
+odom_callback	scripts/run_with_turtle.py	/^def odom_callback(data):$/;"	f
+odom_callback	scripts/run_with_turtle.py~	/^def odom_callback(data):$/;"	f
+offboard_force_enable	scripts/teleop_keyboard_control.py	/^def offboard_force_enable():$/;"	f
+offboard_force_enable	scripts/teleop_keyboard_control_1.py	/^def offboard_force_enable():$/;"	f
+offboard_force_enable	scripts/teleop_keyboard_control_2.py	/^def offboard_force_enable():$/;"	f
+offboard_force_enable	scripts/teleop_keyboard_control_3.py	/^def offboard_force_enable():$/;"	f
+offboard_traject_enable	scripts/teleop_keyboard_control.py	/^def offboard_traject_enable():$/;"	f
+offboard_traject_enable	scripts/teleop_keyboard_control_1.py	/^def offboard_traject_enable():$/;"	f
+offboard_traject_enable	scripts/teleop_keyboard_control_2.py	/^def offboard_traject_enable():$/;"	f
+offboard_traject_enable	scripts/teleop_keyboard_control_3.py	/^def offboard_traject_enable():$/;"	f
+offboard_whycon_enable	scripts/teleop_keyboard_control.py	/^def offboard_whycon_enable():$/;"	f
+offboard_whycon_enable	scripts/teleop_keyboard_control_1.py	/^def offboard_whycon_enable():$/;"	f
+offboard_whycon_enable	scripts/teleop_keyboard_control_2.py	/^def offboard_whycon_enable():$/;"	f
+offboard_whycon_enable	scripts/teleop_keyboard_control_3.py	/^def offboard_whycon_enable():$/;"	f
 old_x	src/demo_read_data.cpp	/^float old_x = 0;$/;"	v
 old_y	src/demo_read_data.cpp	/^float old_y = 0;$/;"	v
 old_z	src/demo_read_data.cpp	/^float old_z = 0;$/;"	v
@@ -389,9 +575,15 @@ open_port	src/demo_gcs4.cpp	/^int myGroundCS::open_port(const char * tty_port)$/
 open_port	src/demo_gcs5.cpp	/^int myGroundCS::open_port(const char * tty_port)$/;"	f	class:myGroundCS
 open_port	src/demo_gcs_API.cpp	/^int myGroundCS::open_port(const char * tty_port)$/;"	f	class:myGroundCS
 open_port	src/demo_rr.cpp	/^int myGroundCS::open_port(const char * tty_port)$/;"	f	class:myGroundCS
+orientation	scripts/lcm/drake/example_t.java	/^    public double orientation[];$/;"	f	class:example_t
+orientation	scripts/lcm/exlcm/example_t.java	/^    public double orientation[];$/;"	f	class:example_t
 pai	src/demo_traj_write.cpp	17;"	d	file:
 pai	src/demo_traj_yuan.cpp	19;"	d	file:
 pai	src/demo_yuan_xy.cpp	18;"	d	file:
+parser	scripts/teleop_keyboard_control.py	/^    parser = argparse.ArgumentParser()$/;"	v
+parser	scripts/teleop_keyboard_control_1.py	/^    parser = argparse.ArgumentParser()$/;"	v
+parser	scripts/teleop_keyboard_control_2.py	/^    parser = argparse.ArgumentParser()$/;"	v
+parser	scripts/teleop_keyboard_control_3.py	/^    parser = argparse.ArgumentParser()$/;"	v
 pitch	src/demo_rr.cpp	/^    float roll,pitch,yaw,rollspeed,pitchspeed,yawspeed;$/;"	m	class:myGroundCS	file:
 pitchspeed	src/demo_rr.cpp	/^    float roll,pitch,yaw,rollspeed,pitchspeed,yawspeed;$/;"	m	class:myGroundCS	file:
 pos	src/client.cpp	/^    float pos[6][3];$/;"	m	struct:rigid_pos	file:
@@ -502,18 +694,29 @@ pose	src/mavros_send_multi5.cpp	/^geometry_msgs::PoseStamped pose;$/;"	v
 pose_mocap	src/data_record.cpp	/^geometry_msgs::PoseStamped pose_mocap;$/;"	v
 pose_status	src/data_record.cpp	/^geometry_msgs::PoseStamped pose_status;$/;"	v
 pose_status	src/time_test.cpp	/^geometry_msgs::PoseStamped pose_status;$/;"	v
+position	scripts/lcm/drake/example_t.java	/^    public double position[];$/;"	f	class:example_t
+position	scripts/lcm/exlcm/example_t.java	/^    public double position[];$/;"	f	class:example_t
 position_setpoint1	src/demo_gcs_API.cpp	/^demo_test::position_setpoint position_setpoint1;$/;"	v
 position_setpoint_name	src/demo_gcs_API.cpp	/^char *position_setpoint_name;$/;"	v
 position_setpoint_sub	src/demo_gcs_API.cpp	/^ros::Publisher position_setpoint_sub;$/;"	v
 predict	src/demo_ekf_esitimator1.cpp	/^void predict()$/;"	f
+print_decode_bool	scripts/mocap_send.py	/^print_decode_bool = False$/;"	v
+print_decode_bool	scripts/mocap_send_1.py	/^print_decode_bool = False$/;"	v
+print_send_bool	scripts/mocap_send.py	/^print_send_bool = True$/;"	v
+print_send_bool	scripts/mocap_send_1.py	/^print_send_bool = True$/;"	v
+print_temp	scripts/teleop_keyboard_control_3.py	/^def print_temp(want_print):$/;"	f
 pub_	src/keyboard_test.cpp	/^        ros::Publisher pub_;$/;"	m	class:SmartCarKeyboardTeleopNode	file:
 q1	src/mavros_att_test.cpp	/^    float q1;$/;"	m	struct:Q_att	file:
+q1	src/mavros_att_test_without_dynamic.cpp	/^    float q1;$/;"	m	struct:Q_att	file:
 q1_collect_temp	src/demo_collect.cpp	/^ q_temp q1_collect_temp;$/;"	v
 q2	src/mavros_att_test.cpp	/^    float q2;$/;"	m	struct:Q_att	file:
+q2	src/mavros_att_test_without_dynamic.cpp	/^    float q2;$/;"	m	struct:Q_att	file:
 q2_collect_temp	src/demo_collect.cpp	/^ q_temp q2_collect_temp;$/;"	v
 q3	src/mavros_att_test.cpp	/^    float q3;$/;"	m	struct:Q_att	file:
+q3	src/mavros_att_test_without_dynamic.cpp	/^    float q3;$/;"	m	struct:Q_att	file:
 q3_collect_temp	src/demo_collect.cpp	/^ q_temp q3_collect_temp;$/;"	v
 q4	src/mavros_att_test.cpp	/^    float q4;$/;"	m	struct:Q_att	file:
+q4	src/mavros_att_test_without_dynamic.cpp	/^    float q4;$/;"	m	struct:Q_att	file:
 q4_collect_temp	src/demo_collect.cpp	/^ q_temp q4_collect_temp;$/;"	v
 q5_collect_temp	src/demo_collect.cpp	/^ q_temp q5_collect_temp;$/;"	v
 q6_collect_temp	src/demo_collect.cpp	/^ q_temp q6_collect_temp;$/;"	v
@@ -573,6 +776,11 @@ robot_run_flag	src/demo_nwforma_test1.cpp	/^bool robot_run_flag[4];$/;"	v
 robot_run_flag	src/demo_nwforma_test2.cpp	/^bool robot_run_flag[4];$/;"	v
 roll	src/demo_rr.cpp	/^    float roll,pitch,yaw,rollspeed,pitchspeed,yawspeed;$/;"	m	class:myGroundCS	file:
 rollspeed	src/demo_rr.cpp	/^    float roll,pitch,yaw,rollspeed,pitchspeed,yawspeed;$/;"	m	class:myGroundCS	file:
+rpy_to_q	scripts/offboard_test.py	/^def rpy_to_q(r,p,yaw):$/;"	f
+rpy_to_q	scripts/teleop_keyboard_control.py	/^def rpy_to_q(r,p,yaw):$/;"	f
+rpy_to_q	scripts/teleop_keyboard_control_1.py	/^def rpy_to_q(r,p,yaw):$/;"	f
+rpy_to_q	scripts/teleop_keyboard_control_2.py	/^def rpy_to_q(r,p,yaw):$/;"	f
+rpy_to_q	scripts/teleop_keyboard_control_3.py	/^def rpy_to_q(r,p,yaw):$/;"	f
 run_vel_	src/keyboard_test.cpp	/^        double run_vel_;$/;"	m	class:SmartCarKeyboardTeleopNode	file:
 send	src/demo_gcs.cpp	/^void send(demo_test::pos_data& xyz, float *data, int& i)$/;"	f
 send	src/demo_gcs1.cpp	/^int send(demo_test::pos_data& xyz, float vx, float vy, float vz, float *data, int fd)$/;"	f
@@ -605,6 +813,8 @@ send_desirepos_freq	src/mavros_send_multi2.cpp	/^float send_desirepos_freq = 20;
 send_desirepos_freq	src/mavros_send_multi3.cpp	/^float send_desirepos_freq = 20;$/;"	v
 send_desirepos_freq	src/mavros_send_multi4.cpp	/^float send_desirepos_freq = 20;$/;"	v
 send_desirepos_freq	src/mavros_send_multi5.cpp	/^float send_desirepos_freq = 20;$/;"	v
+send_hil_gps	scripts/mocap_send.py	/^send_hil_gps = True$/;"	v
+send_hil_gps	scripts/mocap_send_1.py	/^send_hil_gps = True$/;"	v
 send_mutex	src/demo_collect.cpp	/^boost::mutex send_mutex;$/;"	v
 send_mutex	src/demo_gcs4.cpp	/^boost::mutex send_mutex;$/;"	v
 send_mutex	src/demo_gcs5.cpp	/^boost::mutex send_mutex;$/;"	v
@@ -615,6 +825,7 @@ send_mutex	src/mavros_send_multi2.cpp	/^boost::mutex send_mutex;$/;"	v
 send_mutex	src/mavros_send_multi3.cpp	/^boost::mutex send_mutex;$/;"	v
 send_mutex	src/mavros_send_multi4.cpp	/^boost::mutex send_mutex;$/;"	v
 send_mutex	src/mavros_send_multi5.cpp	/^boost::mutex send_mutex;$/;"	v
+send_thread	scripts/demo_test_py.py	/^class send_thread(threading.Thread):$/;"	c
 send_type_freq	src/demo_collect.cpp	/^		float send_type_freq;$/;"	m	struct:_q_temp	file:
 send_type_freq	src/demo_gcs_API.cpp	/^float send_type_freq=5;$/;"	v
 send_type_freq	src/mavros_send.cpp	/^float send_type_freq = 20;$/;"	v
@@ -624,6 +835,13 @@ send_type_freq	src/mavros_send_multi3.cpp	/^float send_type_freq = 20;$/;"	v
 send_type_freq	src/mavros_send_multi4.cpp	/^float send_type_freq = 20;$/;"	v
 send_type_freq	src/mavros_send_multi5.cpp	/^float send_type_freq = 20;$/;"	v
 send_write	src/demo_gcs4.cpp	/^int myGroundCS::send_write(int fd,char *buffer,int length)\/\/bug$/;"	f	class:myGroundCS
+sending_data	scripts/demo_test_py2.py	/^def sending_data():$/;"	f
+sending_data	scripts/mocap_send.py	/^def sending_data():$/;"	f
+sending_data	scripts/mocap_send_1.py	/^def sending_data():$/;"	f
+settings	scripts/teleop_keyboard_control.py	/^    settings = termios.tcgetattr(sys.stdin)$/;"	v
+settings	scripts/teleop_keyboard_control_1.py	/^    settings = termios.tcgetattr(sys.stdin)$/;"	v
+settings	scripts/teleop_keyboard_control_2.py	/^    settings = termios.tcgetattr(sys.stdin)$/;"	v
+settings	scripts/teleop_keyboard_control_3.py	/^    settings = termios.tcgetattr(sys.stdin)$/;"	v
 setup_port	src/demo_gcs1.cpp	/^int setup_port(int fd)$/;"	f
 setup_port	src/demo_gcs2.cpp	/^int setup_port(int fd)$/;"	f
 setup_port	src/demo_gcs3.cpp	/^int setup_port(int fd)$/;"	f
@@ -639,7 +857,13 @@ speed	src/demo_rr.cpp	/^    float jiao,speed;$/;"	m	class:myGroundCS	file:
 ssss	src/demo_pos_write.cpp	/^float ssss;$/;"	v
 ssss	src/demo_pos_write2.cpp	/^float ssss;$/;"	v
 ssss	src/demo_team_pos_write.cpp	/^float ssss;$/;"	v
+state_cb	scripts/offboard_test.py	/^def state_cb(data):$/;"	f
+state_cb	scripts/teleop_keyboard_control.py	/^def state_cb(data):$/;"	f
+state_cb	scripts/teleop_keyboard_control_1.py	/^def state_cb(data):$/;"	f
+state_cb	scripts/teleop_keyboard_control_2.py	/^def state_cb(data):$/;"	f
+state_cb	scripts/teleop_keyboard_control_3.py	/^def state_cb(data):$/;"	f
 state_cb	src/mavros_att_test.cpp	/^void state_cb(const mavros_msgs::State::ConstPtr& msg){$/;"	f
+state_cb	src/mavros_att_test_without_dynamic.cpp	/^void state_cb(const mavros_msgs::State::ConstPtr& msg){$/;"	f
 status_init	src/demo_ekf_esitimator1.cpp	/^bool status_init = false;$/;"	v
 status_need_update	src/demo_ekf_esitimator1.cpp	/^bool status_need_update = false;$/;"	v
 status_publish_name	src/demo_gcs_API.cpp	/^char *status_publish_name;$/;"	v
@@ -681,13 +905,47 @@ subflag	src/demo_pos_write_multi.cpp	/^int subflag=0;$/;"	v
 subflag	src/demo_team_pos_write.cpp	/^int subflag=0;$/;"	v
 t1	src/demo_ekf_esitimator1.cpp	/^	float t1;$/;"	v
 t2	src/demo_ekf_esitimator1.cpp	/^	float t2;$/;"	v
+task_init	scripts/offboard_test.py	/^def task_init():$/;"	f
+task_main	scripts/offboard_test.py	/^def task_main():$/;"	f
+task_main	scripts/teleop_keyboard_control.py	/^def task_main():$/;"	f
+task_main	scripts/teleop_keyboard_control_1.py	/^def task_main():$/;"	f
+task_main	scripts/teleop_keyboard_control_2.py	/^def task_main():$/;"	f
+task_main	scripts/teleop_keyboard_control_3.py	/^def task_main():$/;"	f
 tbk	src/keyboard_test.cpp	/^SmartCarKeyboardTeleopNode* tbk;$/;"	v
 team_will_write	src/demo_nwforma_test1.cpp	/^demo_test::pos_write_team team_will_write[4];$/;"	v
 team_will_write	src/demo_nwforma_test2.cpp	/^demo_test::pos_write_team team_will_write[4];$/;"	v
+teleop_ctrl_srv_fun	scripts/teleop_keyboard_control_2.py	/^def teleop_ctrl_srv_fun(req):$/;"	f
+teleop_ctrl_srv_fun	scripts/teleop_keyboard_control_3.py	/^def teleop_ctrl_srv_fun(req):$/;"	f
+teleop_ctrl_srv_fun	scripts/teleop_server.py	/^def teleop_ctrl_srv_fun(req):$/;"	f
+teleop_ctrl_srv_init	scripts/teleop_keyboard_control_2.py	/^def teleop_ctrl_srv_init():$/;"	f
+teleop_ctrl_srv_init	scripts/teleop_keyboard_control_3.py	/^def teleop_ctrl_srv_init():$/;"	f
+teleop_ctrl_srv_init	scripts/teleop_server.py	/^def teleop_ctrl_srv_init():$/;"	f
 temp	src/demo_rr.cpp	/^    float *temp;$/;"	m	class:myGroundCS	file:
 temp1	src/demo_rr.cpp	/^    const uint8_t *temp1;$/;"	m	class:myGroundCS	file:
 temp_BUF	src/demo_gcs_API.cpp	/^unsigned char (*temp_BUF)[256];$/;"	v
 temp_buff_i	src/demo_gcs_API.cpp	/^int temp_buff_i=0;$/;"	v
+temp_pose	scripts/teleop_keyboard_control.py	/^temp_pose = PoseStamped()$/;"	v
+temp_pose	scripts/teleop_keyboard_control_1.py	/^temp_pose = PoseStamped()$/;"	v
+temp_pose	scripts/teleop_keyboard_control_2.py	/^temp_pose = PoseStamped()$/;"	v
+temp_pose	scripts/teleop_keyboard_control_3.py	/^temp_pose = PoseStamped()$/;"	v
+test_server_fun	scripts/run_with_turtle.py	/^def test_server_fun():$/;"	f
+test_server_fun	scripts/run_with_turtle.py~	/^def test_server_fun():$/;"	f
+test_server_fun	scripts/test_quads_real.py	/^def test_server_fun():$/;"	f
+test_server_fun	scripts/test_quads_real2.py	/^def test_server_fun():$/;"	f
+test_server_fun	scripts/test_server.py	/^def test_server_fun():$/;"	f
+test_server_fun_2	scripts/test_quads_real3.py	/^def test_server_fun_2():$/;"	f
+test_server_fun_3	scripts/test_quads_real3.py	/^def test_server_fun_3():$/;"	f
+test_server_fun_4	scripts/test_quads_real3.py	/^def test_server_fun_4():$/;"	f
+thread_init	scripts/demo_test_py.py	/^def thread_init():$/;"	f
+thread_init	scripts/demo_test_py2.py	/^def thread_init():$/;"	f
+thread_init	scripts/mocap_send.py	/^def thread_init():$/;"	f
+thread_init	scripts/mocap_send_1.py	/^def thread_init():$/;"	f
+thread_init	scripts/teleop_keyboard_control.py	/^def thread_init():$/;"	f
+thread_init	scripts/teleop_keyboard_control_1.py	/^def thread_init():$/;"	f
+thread_init	scripts/teleop_keyboard_control_2.py	/^def thread_init():$/;"	f
+thread_init	scripts/teleop_keyboard_control_3.py	/^def thread_init():$/;"	f
+thread_init	scripts/test_quads_real3.py	/^def thread_init():$/;"	f
+thread_send_data	scripts/demo_test_py.py	/^    def thread_send_data(self):$/;"	m	class:send_thread
 time1	src/demo_gcs1.cpp	/^struct timespec time1 = {0, 0};$/;"	v	typeref:struct:timespec
 time1	src/demo_gcs2.cpp	/^struct timespec time1 = {0, 0};$/;"	v	typeref:struct:timespec
 time1	src/demo_gcs3.cpp	/^struct timespec time1 = {0, 0};$/;"	v	typeref:struct:timespec
@@ -707,12 +965,18 @@ time2	src/demo_gcs_API.cpp	/^	struct timespec time2;$/;"	m	class:myGroundCS	type
 time2	src/demo_traj_write.cpp	/^struct timespec time2={0, 0};$/;"	v	typeref:struct:timespec
 time2	src/demo_traj_yuan.cpp	/^struct timespec time2={0, 0};$/;"	v	typeref:struct:timespec
 time2	src/demo_yuan_xy.cpp	/^struct timespec time2={0, 0};$/;"	v	typeref:struct:timespec
+timestamp	scripts/lcm/drake/example_t.java	/^    public long timestamp;$/;"	f	class:example_t
+timestamp	scripts/lcm/exlcm/example_t.java	/^    public long timestamp;$/;"	f	class:example_t
 traj_data	src/demo_traj_write.cpp	/^demo_test::pos_write_data traj_data;$/;"	v
 traj_data	src/demo_traj_yuan.cpp	/^demo_test::pos_write_data traj_data;$/;"	v
 traj_data	src/demo_yuan_xy.cpp	/^demo_test::pos_write_data traj_data;$/;"	v
 traj_mutex	src/demo_traj_write.cpp	/^boost::mutex traj_mutex;$/;"	v
 traj_mutex	src/demo_traj_yuan.cpp	/^boost::mutex traj_mutex;$/;"	v
 traj_mutex	src/demo_yuan_xy.cpp	/^boost::mutex traj_mutex;$/;"	v
+type	scripts/teleop_keyboard_control.py	/^                        type = int)$/;"	v
+type	scripts/teleop_keyboard_control_1.py	/^                        type = int)$/;"	v
+type	scripts/teleop_keyboard_control_2.py	/^                        type = int)$/;"	v
+type	scripts/teleop_keyboard_control_3.py	/^                        type = int)$/;"	v
 type	src/demo_gcs_API.cpp	/^		int type;$/;"	m	struct:_pos_type_temp	file:
 type	src/demo_pos_write_multi.cpp	/^	char ** type;$/;"	m	class:myStatusRewrite	file:
 type	src/demo_traj_write.cpp	/^unsigned int type = 1;$/;"	v
@@ -738,6 +1002,7 @@ uav_code	src/mavros_send_multi2.cpp	/^demo_test::demo_code uav_code;$/;"	v
 uav_code	src/mavros_send_multi3.cpp	/^demo_test::demo_code uav_code;$/;"	v
 uav_code	src/mavros_send_multi4.cpp	/^demo_test::demo_code uav_code;$/;"	v
 uav_code	src/mavros_send_multi5.cpp	/^demo_test::demo_code uav_code;$/;"	v
+uav_mocap_num	scripts/mocap_send_1.py	/^uav_mocap_num = []$/;"	v
 udpcallback	src/demo_client.cpp	/^void udpcallback(const demo_test::pos_data& pos)$/;"	f
 udpcallback	src/demo_ekf_esitimator1.cpp	/^void udpcallback(const demo_test::pos_data& pos)$/;"	f
 udpcallback	src/demo_gcs.cpp	/^void udpcallback(const demo_test::pos_data& pos)$/;"	f

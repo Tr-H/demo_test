@@ -5,6 +5,7 @@ import sys,select,termios,tty
 import math
 import argparse
 import threading
+import time
 from geometry_msgs.msg import PoseStamped
 from mavros_msgs.srv import CommandBool
 from mavros_msgs.srv import SetMode
@@ -153,12 +154,16 @@ def arm_and_takeoff():
     while not rospy.is_shutdown():
         if(current_state.mode != "OFFBOARD") and ((rospy.Time.now() - last_request) > rospy.Duration(3.0)):
             if set_mode_client(0,"OFFBOARD").success :
+                time.sleep(1)
+                set_mode_client(0,"OFFBOARD")
                 print_temp("无人机 %d 进入offboard模式"%id_uav)
             last_request = rospy.Time.now()
         else:
             if (current_state.mode == "OFFBOARD") and (not current_state.armed) and ((rospy.Time.now() - last_request) > rospy.Duration(3.0)):
                 if arming_client(True).success :
                     print_temp("无人机 %d 已经解锁！"%id_uav)
+                    time.sleep(1)
+                    arming_client(True)
                     is_arm_offb = True
                     break
             elif current_state.armed:
@@ -258,6 +263,8 @@ def land_and_disarm():
         if current_state.armed and ((rospy.Time.now() - last_request) > rospy.Duration(3.0)):
             if arming_client(False).success :
                 print_temp("无人机 %d 已经锁定～"%id_uav)
+                time.sleep(1)
+                arming_client(False)
                 break
             elif not current_state.armed:
                 print_temp("无人机 %d 已经锁定～"%id_uav)

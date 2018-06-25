@@ -148,7 +148,7 @@ mavros_msgs::State current_state;
                yaw_set = 0.0f;
                temp_throttle = 0.56f;
             }
-        else if(process_cout >95*freq_setpoint && process_cout <= 110*freq_setpoint )
+        else if(process_cout >95*freq_setpoint && process_cout <= 210*freq_setpoint )
             {
                 
                 roll_set = 0.0f;
@@ -156,7 +156,7 @@ mavros_msgs::State current_state;
                 yaw_set = 0.0f;
                 temp_throttle = 0.56f;
             }
-        else if(process_cout > 110*freq_setpoint )
+        else if(process_cout > 210*freq_setpoint )
         {
             arm_cmd.request.value = false;
             if(arming_client.call(arm_cmd) && arm_cmd.response.success)

@@ -4,10 +4,11 @@
 
   <node name="mocap_send" pkg="demo_test" type="mocap_send_1.py" output="screen">
     </node>
-    <param name="/mavros_map_opt1_ID" value="2" />
-    <param name="/mavros_map_opt2_ID" value="3" />
-    <param name="/mavros_map_opt3_ID" value="4" />
-//    <param name="/mavros_map_opt4_ID" value="2" />
+    <param name="/mavros_map_opt1_ID" value="1" />
+    <param name="/mavros_map_opt2_ID" value="2" />
+    <param name="/mavros_map_opt3_ID" value="3" />
+    <param name="/mavros_map_opt4_ID" value="4" />
+    <param name="/mavros_map_opt5_ID" value="5" />
     <param name="/print_decode_bool" value="False" />
     <param name="/print_send_bool" value="False" />
     <param name="/send_hil_gps " value="True" />
